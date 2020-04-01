@@ -17,6 +17,8 @@ class Parser:
 
 def main():
     parser = Parser()
+    root = parser.get_root('VTB_Max_Muster_Produktion.xml')
+    parser.view_document(root)
 
 
 if __name__ == "__main__":
