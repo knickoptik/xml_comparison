@@ -2,6 +2,8 @@ import xml.etree.ElementTree as ET
 
 
 class Parser:
+    def __init__(self, document):
+        self.document = document
 
     def get_root(self, document):
         tree = ET.parse(document)
@@ -16,9 +18,8 @@ class Parser:
 
 
 def main():
-    parser = Parser()
-    root = parser.get_root('VTB_Max_Muster_Produktion.xml')
-    parser.view_document(root)
+    parser = Parser('VTB_Max_Muster_Produktion.xml')
+    print(parser.document)
 
 
 if __name__ == "__main__":
