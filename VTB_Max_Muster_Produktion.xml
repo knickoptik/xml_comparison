@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<formular id="996511">
+
+<!--AB_4_XAM  Vertragsbestätigung                               KVASY                         -->
+  <abschlagsformular>
+    <start>
+        <erstellung_start_datum>29.03.2020</erstellung_start_datum>
+        <erstellung_start_uhr>22:02</erstellung_start_uhr>
+        <aufruf_von></aufruf_von>
+        <name_des_reports>AB_4_XAM</name_des_reports>
+        <name_des_datenstroms>AB_4_DATENSTROM</name_des_datenstroms>
+        <name_variante_des_datenstroms>AB_4_DATENSTROM_AM</name_variante_des_datenstroms>
+        <name_nutzer>KVASY</name_nutzer>
+        <name_terminal>UNKNOWN</name_terminal>
+        <name_schema>KVASY</name_schema>
+        <para_pk>220749</para_pk>
+        <name_datenbank>GPCPROD</name_datenbank>
+        <name_xml_kommentar>&lt;SPLIT&gt;XML-220749_200329_220257</name_xml_kommentar>
+        <name_freigabe_zum_loeschen>XXX</name_freigabe_zum_loeschen>
+        <transaktionsnummer></transaktionsnummer>
+        <dms_path>\\SRV0005\Import\kVASy\Prod</dms_path>
+        <testdruck_jn>N</testdruck_jn>
+    </start>
+    <block_abschlag>
+        <objectinfo>RevisionsNr=1.24 zuletzt geändert am 23.08.2018 Variante= Sortierung=</objectinfo>
+      <vertrag>
+          <objectinfo>RevisionsNr=$Revision: 1.67 $ zuletzt geändert am 07.08.2018 Variante=ABSCHLAG_AB4 Sortierung=</objectinfo>
+          <v_medium_sortierfolgenummer>0</v_medium_sortierfolgenummer>
+          <v_medium_bezeichnung>SLP Strom Wirkarbeit ET</v_medium_bezeichnung>
+          <v_medium_kurzbezeichnung></v_medium_kurzbezeichnung>
+          <v_medium_druckbezeichnung>Strom</v_medium_druckbezeichnung>
+          <v_medium_mengeneinheit>kWh</v_medium_mengeneinheit>
+          <v_abrechnung_von>29.04.2020</v_abrechnung_von>
+          <v_abrechnung_bis></v_abrechnung_bis>
+          <v_tarif_bezeichnung>SLP GPE Strom all in. (Seg. C)</v_tarif_bezeichnung>
+          <v_tarif_kurzbezeichnung></v_tarif_kurzbezeichnung>
+          <v_tarif_bezeichnung_druck></v_tarif_bezeichnung_druck>
+          <v_tarif_bezeichnung_lang>Ökostrom und Gewerbestrom (Segment C)</v_tarif_bezeichnung_lang>
+          <v_tarif_all_inclusive_tarif>J</v_tarif_all_inclusive_tarif>
+          <v_tarif_grundversorgungstarif>N</v_tarif_grundversorgungstarif>
+          <v_tarif_ersatzversorgungstarif>N</v_tarif_ersatzversorgungstarif>
+          <v_vertragsnummer>5858585858-S001.001</v_vertragsnummer>
+          <v_vertragsdatum></v_vertragsdatum>
+          <v_abrechnung_id>1875126</v_abrechnung_id>
+          <v_verbrauchsart>Strom SLP</v_verbrauchsart>
+          <v_mehrwertsteuer_prozent>19,00</v_mehrwertsteuer_prozent>
+          <v_tarif_gebuehren_pro_tag>J</v_tarif_gebuehren_pro_tag>
+          <v_abrechnungsart_kurz>STANDARD</v_abrechnungsart_kurz>
+          <v_abrechnungsart_lang>Standard</v_abrechnungsart_lang>
+          <v_erste_von_medium_tarif>29.04.2020</v_erste_von_medium_tarif>
+          <v_ind_abschlag_betrag></v_ind_abschlag_betrag>
+          <v_ind_abschlag_gilt_bis></v_ind_abschlag_gilt_bis>
+          <v_ind_abschlag_toleranz_proz></v_ind_abschlag_toleranz_proz>
+          <v_lfd_nr>325662</v_lfd_nr>
+          <v_lief_vertragsnummer>5858585858-S001.001</v_lief_vertragsnummer>
+          <v_lief_vertragsnummer_1>LVS</v_lief_vertragsnummer_1>
+          <v_lief_vertrag_bezeichnung>Gewerbe 30</v_lief_vertrag_bezeichnung>
+          <v_vertragsart>L</v_vertragsart>
+          <v_energieart>E</v_energieart>
+          <v_lief_gueltig_vom>29.04.2020</v_lief_gueltig_vom>
+          <v_lief_gueltig_bis></v_lief_gueltig_bis>
+          <v_lief_zeitraum_tage></v_lief_zeitraum_tage>
+          <v_kuendigungsfrist>4,00</v_kuendigungsfrist>
+          <v_k_frist_zeiteinheit>Wo</v_k_frist_zeiteinheit>
+          <v_abre_startguthaben></v_abre_startguthaben>
+          <v_abre_datum_startguthaben></v_abre_datum_startguthaben>
+          <v_abre_datum_startguth_endrech></v_abre_datum_startguth_endrech>
+          <v_abre_freimenge></v_abre_freimenge>
+          <v_abre_einm_freimenge></v_abre_einm_freimenge>
+          <v_abre_datum_einm_freimenge></v_abre_datum_einm_freimenge>
+          <v_abre_zpkt_pk>513128</v_abre_zpkt_pk>
+          <v_abre_zpkt_nummer>50505050505</v_abre_zpkt_nummer>
+          <v_vtr_naechster_kuendigungstermin>31.05.2020</v_vtr_naechster_kuendigungstermin>
+          <v_must_lfd_nr>34</v_must_lfd_nr>
+          <v_must_bezeichnung>Gewerbe 30</v_must_bezeichnung>
+          <v_jahrespauschale_von></v_jahrespauschale_von>
+          <v_jahrespauschale_bis></v_jahrespauschale_bis>
+          <v_jahrespauschale></v_jahrespauschale>
+        <block_vbrst_parameter>
+            <objectinfo>RevisionsNr=1.3 zuletzt geändert am 26.05.2008 Variante= Sortierung=</objectinfo>
+        </block_vbrst_parameter>
+        <preiszusammenstellung id="1">
+            <objectinfo>RevisionsNr=1.13 zuletzt geändert am 07.07.2017 Variante= Sortierung=</objectinfo>
+            <v_tarifzusamst_formularbez></v_tarifzusamst_formularbez>
+            <v_tarifzusamst_kurzbezeichnung></v_tarifzusamst_kurzbezeichnung>
+            <v_preiszusamst_bezeichnung>PZS SLP GPE Strom all incl. (Segment C)</v_preiszusamst_bezeichnung>
+            <v_preiszusamst_kurzbezeichnung></v_preiszusamst_kurzbezeichnung>
+            <v_preiszusamst_formularbez></v_preiszusamst_formularbez>
+            <v_preiszusamst_ap_als_gesamtpreis>N</v_preiszusamst_ap_als_gesamtpreis>
+            <v_przusamst_bezeichnung></v_przusamst_bezeichnung>
+            <v_przusamst_kurzbezeichnung></v_przusamst_kurzbezeichnung>
+            <v_przusamst_kommentar></v_przusamst_kommentar>
+            <v_bestpreis_kombination></v_bestpreis_kombination>
+            <v_przusamst_art_kennzeichen>N</v_przusamst_art_kennzeichen>
+            <v_przusamst_art>VA-Tarif</v_przusamst_art>
+            <v_przusamst_benutzungsdauergrenze></v_przusamst_benutzungsdauergrenze>
+            <v_przusamst_nn_kategorie></v_przusamst_nn_kategorie>
+            <v_przusamst_ka_enthalten_j_n>N</v_przusamst_ka_enthalten_j_n>
+          <block_arbeitspreis id="1">
+              <objectinfo>RevisionsNr=1.15 zuletzt geändert am 28.04.2015 Variante= Sortierung=</objectinfo>
+              <v_ap_bezeichnung>EEG-Umlage Wirk ET pos</v_ap_bezeichnung>
+              <v_ap_kurzbezeichnung></v_ap_kurzbezeichnung>
+              <v_ap_bezeichnung_lang></v_ap_bezeichnung_lang>
+              <v_ap_bezeichnung_druck>EEG-Umlage</v_ap_bezeichnung_druck>
+              <v_ap_von>01.01.2020</v_ap_von>
+              <v_ap_bis></v_ap_bis>
+              <v_ap_preis>0,0676600000</v_ap_preis>
+              <v_ap_staffel>N</v_ap_staffel>
+              <v_ap_zonung>N</v_ap_zonung>
+              <v_sap_preis></v_sap_preis>
+              <v_sap_ab></v_sap_ab>
+              <v_sap_bis></v_sap_bis>
+              <v_spa_bezeichnung></v_spa_bezeichnung>
+              <v_zap_preis></v_zap_preis>
+              <v_zap_ab></v_zap_ab>
+              <v_zap_bis></v_zap_bis>
+              <v_zap_bezeichnung></v_zap_bezeichnung>
+              <v_ap_preisart>SLP_S_EEG-Umlage_pos</v_ap_preisart>
+              <v_ap_preisart_steuer_j_n>N</v_ap_preisart_steuer_j_n>
+              <v_ap_preisart_kategorie>Abgabe</v_ap_preisart_kategorie>
+              <v_ap_preisart_gruppierungsart>EEG</v_ap_preisart_gruppierungsart>
+              <v_ap_pa_bez></v_ap_pa_bez>
+              <v_ap_ztkp_bez_lt_vertr></v_ap_ztkp_bez_lt_vertr>
+          </block_arbeitspreis>
+          <block_arbeitspreis id="2">
+              <objectinfo>RevisionsNr=1.15 zuletzt geändert am 28.04.2015 Variante= Sortierung=</objectinfo>
+              <v_ap_bezeichnung>Stromsteuer Wirk ET neg</v_ap_bezeichnung>
+              <v_ap_kurzbezeichnung></v_ap_kurzbezeichnung>
+              <v_ap_bezeichnung_lang></v_ap_bezeichnung_lang>
+              <v_ap_bezeichnung_druck>Stromsteuer</v_ap_bezeichnung_druck>
+              <v_ap_von></v_ap_von>
+              <v_ap_bis></v_ap_bis>
+              <v_ap_preis>-0,0205000000</v_ap_preis>
+              <v_ap_staffel>N</v_ap_staffel>
+              <v_ap_zonung>N</v_ap_zonung>
+              <v_sap_preis></v_sap_preis>
+              <v_sap_ab></v_sap_ab>
+              <v_sap_bis></v_sap_bis>
+              <v_spa_bezeichnung></v_spa_bezeichnung>
+              <v_zap_preis></v_zap_preis>
+              <v_zap_ab></v_zap_ab>
+              <v_zap_bis></v_zap_bis>
+              <v_zap_bezeichnung></v_zap_bezeichnung>
+              <v_ap_preisart>SLP_S_Stromsteuer_neg</v_ap_preisart>
+              <v_ap_preisart_steuer_j_n>J</v_ap_preisart_steuer_j_n>
+              <v_ap_preisart_kategorie>Abgabe (-)</v_ap_preisart_kategorie>
+              <v_ap_preisart_gruppierungsart>Energiesteuer</v_ap_preisart_gruppierungsart>
+              <v_ap_pa_bez></v_ap_pa_bez>
+              <v_ap_ztkp_bez_lt_vertr></v_ap_ztkp_bez_lt_vertr>
+          </block_arbeitspreis>
+          <block_arbeitspreis id="3">
+              <objectinfo>RevisionsNr=1.15 zuletzt geändert am 28.04.2015 Variante= Sortierung=</objectinfo>
+              <v_ap_bezeichnung>EEG-Umlage Wirk ET neg</v_ap_bezeichnung>
+              <v_ap_kurzbezeichnung></v_ap_kurzbezeichnung>
+              <v_ap_bezeichnung_lang></v_ap_bezeichnung_lang>
+              <v_ap_bezeichnung_druck>EEG-Umlage</v_ap_bezeichnung_druck>
+              <v_ap_von>01.01.2020</v_ap_von>
+              <v_ap_bis></v_ap_bis>
+              <v_ap_preis>-0,0675600000</v_ap_preis>
+              <v_ap_staffel>N</v_ap_staffel>
+              <v_ap_zonung>N</v_ap_zonung>
+              <v_sap_preis></v_sap_preis>
+              <v_sap_ab></v_sap_ab>
+              <v_sap_bis></v_sap_bis>
+              <v_spa_bezeichnung></v_spa_bezeichnung>
+              <v_zap_preis></v_zap_preis>
+              <v_zap_ab></v_zap_ab>
+              <v_zap_bis></v_zap_bis>
+              <v_zap_bezeichnung></v_zap_bezeichnung>
+              <v_ap_preisart>SLP_S_EEG-Umlage_neg</v_ap_preisart>
+              <v_ap_preisart_steuer_j_n>N</v_ap_preisart_steuer_j_n>
+              <v_ap_preisart_kategorie>Abgabe (-)</v_ap_preisart_kategorie>
+              <v_ap_preisart_gruppierungsart>EEG</v_ap_preisart_gruppierungsart>
+              <v_ap_pa_bez></v_ap_pa_bez>
+              <v_ap_ztkp_bez_lt_vertr></v_ap_ztkp_bez_lt_vertr>
+          </block_arbeitspreis>
+          <block_arbeitspreis id="4">
+              <objectinfo>RevisionsNr=1.15 zuletzt geändert am 28.04.2015 Variante= Sortierung=</objectinfo>
+              <v_ap_bezeichnung>AP Strom Wirk ET variabel</v_ap_bezeichnung>
+              <v_ap_kurzbezeichnung></v_ap_kurzbezeichnung>
+              <v_ap_bezeichnung_lang></v_ap_bezeichnung_lang>
+              <v_ap_bezeichnung_druck>Arbeitspreis</v_ap_bezeichnung_druck>
+              <v_ap_von></v_ap_von>
+              <v_ap_bis></v_ap_bis>
+              <v_ap_preis></v_ap_preis>
+              <v_ap_staffel>N</v_ap_staffel>
+              <v_ap_zonung>N</v_ap_zonung>
+              <v_sap_preis></v_sap_preis>
+              <v_sap_ab></v_sap_ab>
+              <v_sap_bis></v_sap_bis>
+              <v_spa_bezeichnung></v_spa_bezeichnung>
+              <v_zap_preis></v_zap_preis>
+              <v_zap_ab></v_zap_ab>
+              <v_zap_bis></v_zap_bis>
+              <v_zap_bezeichnung></v_zap_bezeichnung>
+              <v_ap_preisart>SLP_S_Arbeitspreis</v_ap_preisart>
+              <v_ap_preisart_steuer_j_n>N</v_ap_preisart_steuer_j_n>
+              <v_ap_preisart_gruppierungsart>Lieferentgelt</v_ap_preisart_gruppierungsart>
+              <v_ap_pa_bez></v_ap_pa_bez>
+              <v_ap_ztkp_bez_lt_vertr></v_ap_ztkp_bez_lt_vertr>
+          </block_arbeitspreis>
+          <block_arbeitspreis id="5">
+              <objectinfo>RevisionsNr=1.15 zuletzt geändert am 28.04.2015 Variante= Sortierung=</objectinfo>
+              <v_ap_bezeichnung>Stromsteuer Wirk ET pos</v_ap_bezeichnung>
+              <v_ap_kurzbezeichnung></v_ap_kurzbezeichnung>
+              <v_ap_bezeichnung_lang></v_ap_bezeichnung_lang>
+              <v_ap_bezeichnung_druck>Stromsteuer</v_ap_bezeichnung_druck>
+              <v_ap_von></v_ap_von>
+              <v_ap_bis></v_ap_bis>
+              <v_ap_preis>0,0205000000</v_ap_preis>
+              <v_ap_staffel>N</v_ap_staffel>
+              <v_ap_zonung>N</v_ap_zonung>
+              <v_sap_preis></v_sap_preis>
+              <v_sap_ab></v_sap_ab>
+              <v_sap_bis></v_sap_bis>
+              <v_spa_bezeichnung></v_spa_bezeichnung>
+              <v_zap_preis></v_zap_preis>
+              <v_zap_ab></v_zap_ab>
+              <v_zap_bis></v_zap_bis>
+              <v_zap_bezeichnung></v_zap_bezeichnung>
+              <v_ap_preisart>SLP_S_Stromsteuer_pos</v_ap_preisart>
+              <v_ap_preisart_steuer_j_n>J</v_ap_preisart_steuer_j_n>
+              <v_ap_preisart_kategorie>Abgabe</v_ap_preisart_kategorie>
+              <v_ap_preisart_gruppierungsart>Energiesteuer</v_ap_preisart_gruppierungsart>
+              <v_ap_pa_bez></v_ap_pa_bez>
+              <v_ap_ztkp_bez_lt_vertr></v_ap_ztkp_bez_lt_vertr>
+          </block_arbeitspreis>
+          <block_verrechnungspreis id="1">
+              <objectinfo>RevisionsNr=1.23 zuletzt geändert am 05.02.2019 Variante= Sortierung=</objectinfo>
+              <v_vp_bezeichnung>VP 0,00 EUR</v_vp_bezeichnung>
+              <v_vp_bezeichnung_lang></v_vp_bezeichnung_lang>
+              <v_vp_bezeichnung_druck></v_vp_bezeichnung_druck>
+              <v_vp_bezugszeitraum>Jahr</v_vp_bezugszeitraum>
+              <v_hvp_von></v_hvp_von>
+              <v_hvp_bis></v_hvp_bis>
+              <v_hvp_preis>0,0000000000</v_hvp_preis>
+              <v_svp_ab></v_svp_ab>
+              <v_svp_bis></v_svp_bis>
+              <v_svp_preis></v_svp_preis>
+              <v_svp_bezeichnung></v_svp_bezeichnung>
+              <v_vp_preisart>SLP_VP_Null</v_vp_preisart>
+              <v_vp_preisart_steuer_j_n>N</v_vp_preisart_steuer_j_n>
+              <v_vp_preisart_gruppierungsart>Grundpreis</v_vp_preisart_gruppierungsart>
+              <v_vp_mindestpreis></v_vp_mindestpreis>
+              <v_vp_pa_bez></v_vp_pa_bez>
+              <v_vp_ztkp_bez_lt_vertr></v_vp_ztkp_bez_lt_vertr>
+          </block_verrechnungspreis>
+          <block_pauschalpreis id="1">
+              <objectinfo>RevisionsNr=1.12 zuletzt geändert am 18.02.2016 Variante= Sortierung=</objectinfo>
+              <p_pp_bezeichnung>MSB_Wandler_neg_ET_SW</p_pp_bezeichnung>
+              <p_pp_kurzbezeichnung></p_pp_kurzbezeichnung>
+              <p_pp_bezeichnung_lang></p_pp_bezeichnung_lang>
+              <p_pp_bezeichnung_druck></p_pp_bezeichnung_druck>
+              <p_pp_bezugszeitraum>Jahr</p_pp_bezugszeitraum>
+              <p_hpp_von></p_hpp_von>
+              <p_hpp_bis></p_hpp_bis>
+              <p_hpp_preis></p_hpp_preis>
+              <p_hpp_staffelpreis_j_n>V</p_hpp_staffelpreis_j_n>
+              <p_spp_ab></p_spp_ab>
+              <p_spp_bis></p_spp_bis>
+              <p_spp_preis></p_spp_preis>
+              <p_spp_bezeichnung></p_spp_bezeichnung>
+              <p_pp_mindestpreis></p_pp_mindestpreis>
+              <p_pp_pa_bez></p_pp_pa_bez>
+              <p_pp_preisart>MSB_Wandler_neg</p_pp_preisart>
+              <p_pp_preisart_ist_steuer>N</p_pp_preisart_ist_steuer>
+              <p_pp_preisart_kategorie>NN-Kosten (-)</p_pp_preisart_kategorie>
+              <p_pp_preisart_gruppierungsart>Messstellenbetrieb</p_pp_preisart_gruppierungsart>
+              <p_pp_vbrst_parameter_m_f></p_pp_vbrst_parameter_m_f>
+              <p_pp_ztkp_bez_lt_vertr></p_pp_ztkp_bez_lt_vertr>
+          </block_pauschalpreis>
+          <block_pauschalpreis id="2">
+              <objectinfo>RevisionsNr=1.12 zuletzt geändert am 18.02.2016 Variante= Sortierung=</objectinfo>
+              <p_pp_bezeichnung>MSB_Steuergerät_pos_ET_SW</p_pp_bezeichnung>
+              <p_pp_kurzbezeichnung></p_pp_kurzbezeichnung>
+              <p_pp_bezeichnung_lang></p_pp_bezeichnung_lang>
+              <p_pp_bezeichnung_druck>Steuergerät</p_pp_bezeichnung_druck>
+              <p_pp_bezugszeitraum>Jahr</p_pp_bezugszeitraum>
+              <p_hpp_von></p_hpp_von>
+              <p_hpp_bis></p_hpp_bis>
+              <p_hpp_preis></p_hpp_preis>
+              <p_hpp_staffelpreis_j_n>V</p_hpp_staffelpreis_j_n>
+              <p_spp_ab></p_spp_ab>
+              <p_spp_bis></p_spp_bis>
+              <p_spp_preis></p_spp_preis>
+              <p_spp_bezeichnung></p_spp_bezeichnung>
+              <p_pp_mindestpreis></p_pp_mindestpreis>
+              <p_pp_pa_bez></p_pp_pa_bez>
+              <p_pp_preisart>MSB_Steuergerät_pos</p_pp_preisart>
+              <p_pp_preisart_ist_steuer>N</p_pp_preisart_ist_steuer>
+              <p_pp_preisart_kategorie>NN-Kosten</p_pp_preisart_kategorie>
+              <p_pp_preisart_gruppierungsart>Messstellenbetrieb</p_pp_preisart_gruppierungsart>
+              <p_pp_vbrst_parameter_m_f></p_pp_vbrst_parameter_m_f>
+              <p_pp_ztkp_bez_lt_vertr></p_pp_ztkp_bez_lt_vertr>
+          </block_pauschalpreis>
+          <block_pauschalpreis id="3">
+              <objectinfo>RevisionsNr=1.12 zuletzt geändert am 18.02.2016 Variante= Sortierung=</objectinfo>
+              <p_pp_bezeichnung>MSB_POG_pos_ET_SW</p_pp_bezeichnung>
+              <p_pp_kurzbezeichnung></p_pp_kurzbezeichnung>
+              <p_pp_bezeichnung_lang></p_pp_bezeichnung_lang>
+              <p_pp_bezeichnung_druck>mod. Messeinrichtung</p_pp_bezeichnung_druck>
+              <p_pp_bezugszeitraum>Jahr</p_pp_bezugszeitraum>
+              <p_hpp_von></p_hpp_von>
+              <p_hpp_bis></p_hpp_bis>
+              <p_hpp_preis></p_hpp_preis>
+              <p_hpp_staffelpreis_j_n>V</p_hpp_staffelpreis_j_n>
+              <p_spp_ab></p_spp_ab>
+              <p_spp_bis></p_spp_bis>
+              <p_spp_preis></p_spp_preis>
+              <p_spp_bezeichnung></p_spp_bezeichnung>
+              <p_pp_mindestpreis></p_pp_mindestpreis>
+              <p_pp_pa_bez></p_pp_pa_bez>
+              <p_pp_preisart>MSB_POG_pos</p_pp_preisart>
+              <p_pp_preisart_ist_steuer>N</p_pp_preisart_ist_steuer>
+              <p_pp_preisart_kategorie>NN-Kosten</p_pp_preisart_kategorie>
+              <p_pp_preisart_gruppierungsart>Messstellenbetrieb</p_pp_preisart_gruppierungsart>
+              <p_pp_vbrst_parameter_m_f></p_pp_vbrst_parameter_m_f>
+              <p_pp_ztkp_bez_lt_vertr></p_pp_ztkp_bez_lt_vertr>
+          </block_pauschalpreis>
+          <block_pauschalpreis id="4">
+              <objectinfo>RevisionsNr=1.12 zuletzt geändert am 18.02.2016 Variante= Sortierung=</objectinfo>
+              <p_pp_bezeichnung>GP_Strom ET_variabel</p_pp_bezeichnung>
+              <p_pp_kurzbezeichnung></p_pp_kurzbezeichnung>
+              <p_pp_bezeichnung_lang></p_pp_bezeichnung_lang>
+              <p_pp_bezeichnung_druck>Grundpreis</p_pp_bezeichnung_druck>
+              <p_pp_bezugszeitraum>Monat</p_pp_bezugszeitraum>
+              <p_hpp_von></p_hpp_von>
+              <p_hpp_bis></p_hpp_bis>
+              <p_hpp_preis></p_hpp_preis>
+              <p_hpp_staffelpreis_j_n>V</p_hpp_staffelpreis_j_n>
+              <p_spp_ab></p_spp_ab>
+              <p_spp_bis></p_spp_bis>
+              <p_spp_preis></p_spp_preis>
+              <p_spp_bezeichnung></p_spp_bezeichnung>
+              <p_pp_mindestpreis></p_pp_mindestpreis>
+              <p_pp_pa_bez></p_pp_pa_bez>
+              <p_pp_preisart>SLP_S_Grundpreis</p_pp_preisart>
+              <p_pp_preisart_ist_steuer>N</p_pp_preisart_ist_steuer>
+              <p_pp_preisart_gruppierungsart>Lieferentgelt</p_pp_preisart_gruppierungsart>
+              <p_pp_vbrst_parameter_m_f></p_pp_vbrst_parameter_m_f>
+              <p_pp_ztkp_bez_lt_vertr></p_pp_ztkp_bez_lt_vertr>
+          </block_pauschalpreis>
+          <block_pauschalpreis id="5">
+              <objectinfo>RevisionsNr=1.12 zuletzt geändert am 18.02.2016 Variante= Sortierung=</objectinfo>
+              <p_pp_bezeichnung>MSB_POG_neg_ET_SW</p_pp_bezeichnung>
+              <p_pp_kurzbezeichnung></p_pp_kurzbezeichnung>
+              <p_pp_bezeichnung_lang></p_pp_bezeichnung_lang>
+              <p_pp_bezeichnung_druck>mod. Messeinrichtung</p_pp_bezeichnung_druck>
+              <p_pp_bezugszeitraum>Jahr</p_pp_bezugszeitraum>
+              <p_hpp_von></p_hpp_von>
+              <p_hpp_bis></p_hpp_bis>
+              <p_hpp_preis></p_hpp_preis>
+              <p_hpp_staffelpreis_j_n>V</p_hpp_staffelpreis_j_n>
+              <p_spp_ab></p_spp_ab>
+              <p_spp_bis></p_spp_bis>
+              <p_spp_preis></p_spp_preis>
+              <p_spp_bezeichnung></p_spp_bezeichnung>
+              <p_pp_mindestpreis></p_pp_mindestpreis>
+              <p_pp_pa_bez></p_pp_pa_bez>
+              <p_pp_preisart>MSB_POG_neg</p_pp_preisart>
+              <p_pp_preisart_ist_steuer>N</p_pp_preisart_ist_steuer>
+              <p_pp_preisart_kategorie>NN-Kosten (-)</p_pp_preisart_kategorie>
+              <p_pp_preisart_gruppierungsart>Messstellenbetrieb</p_pp_preisart_gruppierungsart>
+              <p_pp_vbrst_parameter_m_f></p_pp_vbrst_parameter_m_f>
+              <p_pp_ztkp_bez_lt_vertr></p_pp_ztkp_bez_lt_vertr>
+          </block_pauschalpreis>
+          <block_pauschalpreis id="6">
+              <objectinfo>RevisionsNr=1.12 zuletzt geändert am 18.02.2016 Variante= Sortierung=</objectinfo>
+              <p_pp_bezeichnung>MSB_Steuergerät_neg_ET_SW</p_pp_bezeichnung>
+              <p_pp_kurzbezeichnung></p_pp_kurzbezeichnung>
+              <p_pp_bezeichnung_lang></p_pp_bezeichnung_lang>
+              <p_pp_bezeichnung_druck>Steuergerät</p_pp_bezeichnung_druck>
+              <p_pp_bezugszeitraum>Jahr</p_pp_bezugszeitraum>
+              <p_hpp_von></p_hpp_von>
+              <p_hpp_bis></p_hpp_bis>
+              <p_hpp_preis></p_hpp_preis>
+              <p_hpp_staffelpreis_j_n>V</p_hpp_staffelpreis_j_n>
+              <p_spp_ab></p_spp_ab>
+              <p_spp_bis></p_spp_bis>
+              <p_spp_preis></p_spp_preis>
+              <p_spp_bezeichnung></p_spp_bezeichnung>
+              <p_pp_mindestpreis></p_pp_mindestpreis>
+              <p_pp_pa_bez></p_pp_pa_bez>
+              <p_pp_preisart>MSB_Steuergerät_neg</p_pp_preisart>
+              <p_pp_preisart_ist_steuer>N</p_pp_preisart_ist_steuer>
+              <p_pp_preisart_kategorie>NN-Kosten (-)</p_pp_preisart_kategorie>
+              <p_pp_preisart_gruppierungsart>Messstellenbetrieb</p_pp_preisart_gruppierungsart>
+              <p_pp_vbrst_parameter_m_f></p_pp_vbrst_parameter_m_f>
+              <p_pp_ztkp_bez_lt_vertr></p_pp_ztkp_bez_lt_vertr>
+          </block_pauschalpreis>
+          <block_pauschalpreis id="7">
+              <objectinfo>RevisionsNr=1.12 zuletzt geändert am 18.02.2016 Variante= Sortierung=</objectinfo>
+              <p_pp_bezeichnung>MSB_Wandler_pos_ET_SW</p_pp_bezeichnung>
+              <p_pp_kurzbezeichnung></p_pp_kurzbezeichnung>
+              <p_pp_bezeichnung_lang></p_pp_bezeichnung_lang>
+              <p_pp_bezeichnung_druck>Wandler</p_pp_bezeichnung_druck>
+              <p_pp_bezugszeitraum>Jahr</p_pp_bezugszeitraum>
+              <p_hpp_von></p_hpp_von>
+              <p_hpp_bis></p_hpp_bis>
+              <p_hpp_preis></p_hpp_preis>
+              <p_hpp_staffelpreis_j_n>V</p_hpp_staffelpreis_j_n>
+              <p_spp_ab></p_spp_ab>
+              <p_spp_bis></p_spp_bis>
+              <p_spp_preis></p_spp_preis>
+              <p_spp_bezeichnung></p_spp_bezeichnung>
+              <p_pp_mindestpreis></p_pp_mindestpreis>
+              <p_pp_pa_bez></p_pp_pa_bez>
+              <p_pp_preisart>MSB_Wandler_pos</p_pp_preisart>
+              <p_pp_preisart_ist_steuer>N</p_pp_preisart_ist_steuer>
+              <p_pp_preisart_kategorie>NN-Kosten</p_pp_preisart_kategorie>
+              <p_pp_preisart_gruppierungsart>Messstellenbetrieb</p_pp_preisart_gruppierungsart>
+              <p_pp_vbrst_parameter_m_f></p_pp_vbrst_parameter_m_f>
+              <p_pp_ztkp_bez_lt_vertr></p_pp_ztkp_bez_lt_vertr>
+          </block_pauschalpreis>
+        </preiszusammenstellung>
+        <block_produktinformation id="1">
+            <objectinfo>RevisionsNr=$Revision: 1.18 $ zuletzt geändert am 11.12.2015 Variante= Sortierung=</objectinfo>
+            <v_crm_preisbindung>31.12.2017</v_crm_preisbindung>
+            <v_crm_preisankuendigung>21.04.2020</v_crm_preisankuendigung>
+            <v_crm_datum_von>29.04.2020</v_crm_datum_von>
+            <v_crm_jahresbetrag>1894,80</v_crm_jahresbetrag>
+            <v_crm_abschlag_brutto>158,00</v_crm_abschlag_brutto>
+            <v_crm_jahresverbrauch>6000</v_crm_jahresverbrauch>
+            <v_crm_jahresverbrauch_nb>5970</v_crm_jahresverbrauch_nb>
+            <v_crm_jahresbetrag_kunde>1894,80</v_crm_jahresbetrag_kunde>
+            <v_crm_abschlag_brutto_kunde>158,00</v_crm_abschlag_brutto_kunde>
+            <v_crm_jahresverbrauch_kunde>6000</v_crm_jahresverbrauch_kunde>
+            <v_crm_prod_art>F</v_crm_prod_art>
+            <v_crm_prod_jv_von>0,00</v_crm_prod_jv_von>
+            <v_crm_prod_jv_bis>100000,00</v_crm_prod_jv_bis>
+            <v_crm_prod_preisgarantie>E</v_crm_prod_preisgarantie>
+            <v_crm_prod_preisankuendig>8,00</v_crm_prod_preisankuendig>
+            <v_crm_prod_preisankuendig_me>Woche</v_crm_prod_preisankuendig_me>
+            <v_crm_prod_kundengruppe_kat>G</v_crm_prod_kundengruppe_kat>
+            <v_crm_prod_produktart>F</v_crm_prod_produktart>
+            <v_crm_prod_formularbez>Gewerbe 30</v_crm_prod_formularbez>
+            <v_crm_mt_gln>9999999999997</v_crm_mt_gln>
+            <v_crm_mt_kurz>NB_E_Schlesw.-Holst.</v_crm_mt_kurz>
+          <block_preisvariablen id="1">
+              <objectinfo>RevisionsNr=$Revision: 1.5 $ zuletzt geändert am 16.06.2014 Variante= Sortierung=</objectinfo>
+              <v_pva_bezeichnung>AP Strom HT</v_pva_bezeichnung>
+              <v_pva_preiskomponente>Arbeitspreis</v_pva_preiskomponente>
+              <v_pva_kategorie>Arbeitspreis HT</v_pva_kategorie>
+              <v_pva_betrag_netto>25,04000</v_pva_betrag_netto>
+              <v_pva_betrag_brutto>29,80000</v_pva_betrag_brutto>
+              <v_pva_sb_auszahlung_mit_rechnung> </v_pva_sb_auszahlung_mit_rechnung>
+          </block_preisvariablen>
+          <block_preisvariablen id="2">
+              <objectinfo>RevisionsNr=$Revision: 1.5 $ zuletzt geändert am 16.06.2014 Variante= Sortierung=</objectinfo>
+              <v_pva_bezeichnung>GP Strom</v_pva_bezeichnung>
+              <v_pva_preiskomponente>Pauschalpreis</v_pva_preiskomponente>
+              <v_pva_kategorie>Grundpreis</v_pva_kategorie>
+              <v_pva_betrag_netto>7,48000</v_pva_betrag_netto>
+              <v_pva_betrag_brutto>8,90000</v_pva_betrag_brutto>
+              <v_pva_sb_auszahlung_mit_rechnung> </v_pva_sb_auszahlung_mit_rechnung>
+          </block_preisvariablen>
+          <block_angebotsvorgang id="1">
+              <objectinfo>RevisionsNr=$Revision: 1.3 $ zuletzt geändert am 10.12.2015 Variante= Sortierung=</objectinfo>
+            <block_angebotszaehler id="1">
+                <objectinfo>RevisionsNr=$Revision: 1.3 $ zuletzt geändert am 16.06.2014 Variante= Sortierung=</objectinfo>
+                <v_crm_vm_zaehler_nr>1EMHEMHEMHEMH1</v_crm_vm_zaehler_nr>
+            </block_angebotszaehler>
+          </block_angebotsvorgang>
+        </block_produktinformation>
+        <block_cs_evi_adressen id="1">
+            <objectinfo>RevisionsNr=$Revision: 1.8 $ zuletzt geändert am 11.12.2015 Variante= Sortierung=</objectinfo>
+            <an_name1>Muster</an_name1>
+            <an_name2>Max</an_name2>
+            <an_ort>OrtXY</an_ort>
+            <an_plz>22222</an_plz>
+            <an_lkz>DE</an_lkz>
+            <an_strasse>STRXYZ</an_strasse>
+            <an_hausnummer>11</an_hausnummer>
+            <an_anrede_brief>Sehr geehrte Frau Muster</an_anrede_brief>
+        </block_cs_evi_adressen>
+      </vertrag>
+    </block_abschlag>
+    <ende>
+        <erstellung_ende_datum>29.03.2020</erstellung_ende_datum>
+        <erstellung_ende_uhr>22:03</erstellung_ende_uhr>
+        <anzahl_dokumente>0</anzahl_dokumente>
+        <betrag_summe>0,00</betrag_summe>
+    </ende>
+  </abschlagsformular>
+</formular>
+
