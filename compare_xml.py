@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import os
 import logging
 
 
@@ -10,29 +11,41 @@ class Document:
 
 
 class Parser:
-    def __init__(self, document):
-        self.document = document
+    def __init__(self, file):
+        self.file = file
 
     def get_root(self):
-        tree = ET.parse(self.document)
+        tree = ET.parse(self.file)
         return tree.getroot()
 
     def find_tag(self, root, tag_name):
         for tag in root.iter(tag_name):
             return tag
 
-    def view_document(self, root):
-        print(ET.tostring(root, encoding='utf8').decode('utf8'))
+    def get_attribute(self, tag):
+        return tag.attrib
+
+    def to_string(self, element):
+        return ET.tostring(element, encoding='utf8').decode('utf8')
 
 
-# todo: Only one parser instead of two parsers.
+
+# todo: Delete all objects after comparison --> too much memory.
 def main():
-    logging.info('Parsing documents.')
-    parser = Parser('VTB_Max_Muster_Produktion.xml')
-    root = parser.get_root()
-    parser.find_tag(root, 'formular')
-    # document_production = Document()
-    # document_test = Document()
+    logging.info('Parse documents.')
+    for file in os.listdir('data'):
+        try:
+            parser = Parser('data/' + file)
+            root = parser.get_root()
+            form = parser.find_tag(root, 'formular')
+            form_id = str(parser.get_attribute(form).get('id'))
+            print(form_id)
+            contract_number = parser.find_tag(root, 'v_vertragsnummer').text
+            print(contract_number)
+            document = Document(form_id, contract_number, root)
+            print(document)
+        except ET.ParseError as e:
+            logging.warning('File ' + file + ' cannot be parsed.\n' + str(e))
 
 
 if __name__ == "__main__":
