@@ -1,10 +1,11 @@
 import xml.etree.ElementTree as ET
 import os
+from collections import OrderedDict
 import logging
 
 
 class Document:
-    def __init__(self, form_id: str, contract_number: str, form: object):
+    def __init__(self, form_id: str, contract_number: str, form: OrderedDict):
         self.form_id = form_id
         self.contract_number = contract_number
         self.form = form
@@ -27,7 +28,6 @@ class Parser:
 
     def to_string(self, element):
         return ET.tostring(element, encoding='utf8').decode('utf8')
-
 
 
 # todo: Delete all objects after comparison --> too much memory.
