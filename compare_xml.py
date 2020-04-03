@@ -22,12 +22,11 @@ logger.addHandler(stream_handler)
 
 
 class Document:
-    def __init__(self, form_id: str, contract_number: object, env: str, form: object):
+    def __init__(self, form_id: str, contract_number: object, form: object):
         self.form_id = form_id
         self.contract_number = contract_number
-        self.env = env
         self.form = form
-        logger.debug('Created document: Form ID - {}, Contract Number - {}, Env - {}'.format(self.form_id, self.contract_number, self.env))
+        logger.debug('Created document: Form ID - {}, Contract Number - {}'.format(self.form_id, self.contract_number))
 
 
 class Parser:
@@ -51,28 +50,28 @@ class Parser:
 
 
 class CompareXml(unittest.TestCase):
+    documents = dict()
+
     def setUp(self):
-        documents = dict()
         logger.debug('Parsing documents.')
         for file in os.listdir('data'):
             try:
                 if file.endswith('.xml'):
-                    parser = Parser('data/' + file, documents)
+                    parser = Parser('data/' + file, self.documents)
                     root = parser.get_root()
                     xml = parser.find_tag(root, 'formular')
                     form_id = str(parser.get_attribute(xml).get('id'))
                     contract_number = parser.find_tag(root, 'v_vertragsnummer')
-                    environment = str(file)
-                    documents[file] = Document(form_id, contract_number, environment, xml)
+                    self.documents[file] = Document(form_id, contract_number, xml)
+                    logger.debug(self.documents)
                 else:
                     logger.error('File is not in xml format.')
                     raise TypeError
             except ET.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
 
-    def test_compare(self):
-        self.assertTrue(1 == 1)
-
+    def test_compare_form_ids(self, expected, actual):
+        self.assertEqual(expected, actual)
 
 # todo: Compare all tags and texts --> log mismatches.
 # todo: Log where in the hierarchy of the xml - document the error occured.
