@@ -50,6 +50,7 @@ class Parser:
 
 class CompareXml(unittest.TestCase):
     documents = dict()
+    parser: Parser = None
 
     def get_document(self, index):
         return list(self.documents.items())[index][1]
@@ -81,13 +82,13 @@ class CompareXml(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         logger.debug('Parsing documents.')
+        cls.parser = Parser(cls.documents)
         for file in os.listdir('data'):
             try:
-                parser = Parser(cls.documents)
-                root = parser.get_root('data/' + file)
-                xml = parser.find_tag(root, 'formular')
-                form_id = str(parser.get_attribute(xml).get('id'))
-                contract_number = parser.find_tag(root, 'v_vertragsnummer')
+                root = cls.parser.get_root('data/' + file)
+                xml = cls.parser.find_tag(root, 'formular')
+                form_id = str(cls.parser.get_attribute(xml).get('id'))
+                contract_number = cls.parser.find_tag(root, 'v_vertragsnummer')
                 cls.documents[file] = Document(form_id, contract_number, xml)
             except ET.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
