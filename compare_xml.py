@@ -78,9 +78,4 @@ class CompareXml(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    # Log output of test runner to log file.
-    # log_file = 'comparison.log'
-    # with open(log_file, 'w') as f:
-    #     runner = unittest.TextTestRunner(f)
-    #     unittest.main(testRunner=runner)
     unittest.main()
