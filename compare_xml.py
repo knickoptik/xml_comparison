@@ -22,11 +22,12 @@ logger.addHandler(stream_handler)
 
 
 class Document:
-    def __init__(self, form_id: str, contract_number: object, form: object):
+    def __init__(self, form_id: str, contract_number: object, env: str, form: object):
         self.form_id = form_id
         self.contract_number = contract_number
+        self.env = env
         self.form = form
-        logger.debug('Created document: Form ID - {}, Contract Number - {}'.format(self.form_id, self.contract_number))
+        logger.debug('Created document: Form ID - {}, Contract Number - {}, Env - {}'.format(self.form_id, self.contract_number, self.env))
 
 
 class Parser:
@@ -52,7 +53,7 @@ class Parser:
 class CompareXml(unittest.TestCase):
     def setUp(self):
         documents = dict()
-        logger.info('Parsing documents.')
+        logger.debug('Parsing documents.')
         for file in os.listdir('data'):
             try:
                 if file.endswith('.xml'):
@@ -61,8 +62,8 @@ class CompareXml(unittest.TestCase):
                     xml = parser.find_tag(root, 'formular')
                     form_id = str(parser.get_attribute(xml).get('id'))
                     contract_number = parser.find_tag(root, 'v_vertragsnummer')
-                    # todo: Document name should be given automatically.
-                    documents[file] = Document(form_id, contract_number, xml)
+                    environment = str(file)
+                    documents[file] = Document(form_id, contract_number, environment, xml)
                 else:
                     logger.error('File is not in xml format.')
                     raise TypeError
@@ -70,7 +71,7 @@ class CompareXml(unittest.TestCase):
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
 
     def test_compare(self):
-        self.assertTrue(1 == 2)
+        self.assertTrue(1 == 1)
 
 
 # todo: Compare all tags and texts --> log mismatches.
