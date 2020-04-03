@@ -72,13 +72,21 @@ class CompareXml(unittest.TestCase):
             except ET.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
 
-    def test_compare_form_ids(self):
+    def test_compare_form_id(self):
         try:
             self.assertEqual(self.get_document(0).form_id, self.get_document(1).form_id)
             logger.info('Form Ids match.')
         except AssertionError as e:
             logger.error('Form Ids do not match.\n' + str(e))
 
+    def test_compare_contract_number(self):
+        try:
+            self.assertEqual(self.get_document(0).contract_number.text, self.get_document(1).contract_number.text)
+            logger.info('Contract numbers match.')
+        except AssertionError as e:
+            logger.error('Contract numbers do not match.\n' + str(e))
+
+# todo: Stop test suite when form_id or contract_number do not match.
 # todo: Compare all tags and texts --> log mismatches.
 # todo: Log where in the hierarchy of the xml - document the error occured.
 

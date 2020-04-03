@@ -1,4 +1,8 @@
-04/03/2020 03:34:16 PM DEBUG Parsing documents.
-04/03/2020 03:34:16 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x10241a860>
-04/03/2020 03:34:16 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x102419ef0>
-04/03/2020 03:34:16 PM INFO Form Ids match.
+04/03/2020 03:41:24 PM DEBUG Parsing documents.
+04/03/2020 03:41:24 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x10ff629f0>
+04/03/2020 03:41:24 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x10ff770e0>
+04/03/2020 03:41:24 PM INFO Contract numbers match.
+04/03/2020 03:41:24 PM DEBUG Parsing documents.
+04/03/2020 03:41:24 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x10ffad7c0>
+04/03/2020 03:41:24 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x10ff826d0>
+04/03/2020 03:41:24 PM INFO Form Ids match.
