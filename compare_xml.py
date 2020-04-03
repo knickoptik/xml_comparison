@@ -30,12 +30,11 @@ class Document:
 
 
 class Parser:
-    def __init__(self, file: object, documents: dict):
-        self.file = file
+    def __init__(self, documents: dict):
         self.documents = documents
 
-    def get_root(self):
-        tree = ET.parse(self.file)
+    def get_root(self, file):
+        tree = ET.parse(file)
         return tree.getroot()
 
     def find_tag(self, root, tag_name):
@@ -84,8 +83,8 @@ class CompareXml(unittest.TestCase):
         logger.debug('Parsing documents.')
         for file in os.listdir('data'):
             try:
-                parser = Parser('data/' + file, cls.documents)
-                root = parser.get_root()
+                parser = Parser(cls.documents)
+                root = parser.get_root('data/' + file)
                 xml = parser.find_tag(root, 'formular')
                 form_id = str(parser.get_attribute(xml).get('id'))
                 contract_number = parser.find_tag(root, 'v_vertragsnummer')
@@ -98,7 +97,6 @@ class CompareXml(unittest.TestCase):
             logger.debug('Comparing documents.')
 
 
-# todo: Stop test suite when form_id or contract_number do not match.
 # todo: Compare all tags and texts --> log mismatches.
 # todo: Log where in the hierarchy of the xml - document the error occured.
 
