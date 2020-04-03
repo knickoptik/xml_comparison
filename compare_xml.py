@@ -55,36 +55,48 @@ class CompareXml(unittest.TestCase):
     def get_document(self, index):
         return list(self.documents.items())[index][1]
 
-    def setUp(self):
-        logger.debug('Parsing documents.')
-        for file in os.listdir('data'):
-            try:
-                if file.endswith('.xml'):
-                    parser = Parser('data/' + file, self.documents)
-                    root = parser.get_root()
-                    xml = parser.find_tag(root, 'formular')
-                    form_id = str(parser.get_attribute(xml).get('id'))
-                    contract_number = parser.find_tag(root, 'v_vertragsnummer')
-                    self.documents[file] = Document(form_id, contract_number, xml)
-                else:
-                    logger.error('File is not in xml format.')
-                    raise TypeError
-            except ET.ParseError as e:
-                logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
-
-    def test_compare_form_id(self):
+    def compare_form_id(self):
         try:
             self.assertEqual(self.get_document(0).form_id, self.get_document(1).form_id)
             logger.info('Form Ids match.')
         except AssertionError as e:
             logger.error('Form Ids do not match.\n' + str(e))
+        else:
+            return True
 
-    def test_compare_contract_number(self):
+    def compare_contract_number(self):
         try:
             self.assertEqual(self.get_document(0).contract_number.text, self.get_document(1).contract_number.text)
             logger.info('Contract numbers match.')
         except AssertionError as e:
             logger.error('Contract numbers do not match.\n' + str(e))
+        else:
+            return True
+
+    def file_is_xml(self, file):
+        try:
+            file.endswith('.xml')
+        except TypeError as e:
+            logger.error('File is not in xml format.\n' + str(e))
+
+    @classmethod
+    def setUpClass(cls):
+        logger.debug('Parsing documents.')
+        for file in os.listdir('data'):
+            try:
+                parser = Parser('data/' + file, cls.documents)
+                root = parser.get_root()
+                xml = parser.find_tag(root, 'formular')
+                form_id = str(parser.get_attribute(xml).get('id'))
+                contract_number = parser.find_tag(root, 'v_vertragsnummer')
+                cls.documents[file] = Document(form_id, contract_number, xml)
+            except ET.ParseError as e:
+                logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
+
+    def test_compare_documents(self):
+        if self.compare_form_id() and self.compare_contract_number():
+            logger.debug('Comparing documents.')
+
 
 # todo: Stop test suite when form_id or contract_number do not match.
 # todo: Compare all tags and texts --> log mismatches.
