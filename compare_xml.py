@@ -5,7 +5,7 @@ try:
     import logging
     import unittest
 except ImportError as e:
-    logging.critical('Importing dependency failed with error: ' + e)
+    logging.critical('Importing dependency failed with error: ' + str(e))
 
 
 logging.basicConfig(
@@ -52,6 +52,9 @@ class Parser:
 class CompareXml(unittest.TestCase):
     documents = dict()
 
+    def get_document(self, index):
+        return list(self.documents.items())[index][1]
+
     def setUp(self):
         logger.debug('Parsing documents.')
         for file in os.listdir('data'):
@@ -63,15 +66,18 @@ class CompareXml(unittest.TestCase):
                     form_id = str(parser.get_attribute(xml).get('id'))
                     contract_number = parser.find_tag(root, 'v_vertragsnummer')
                     self.documents[file] = Document(form_id, contract_number, xml)
-                    logger.debug(self.documents)
                 else:
                     logger.error('File is not in xml format.')
                     raise TypeError
             except ET.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
 
-    def test_compare_form_ids(self, expected, actual):
-        self.assertEqual(expected, actual)
+    def test_compare_form_ids(self):
+        try:
+            self.assertEqual(self.get_document(0).form_id, self.get_document(1).form_id)
+            logger.info('Form Ids match.')
+        except AssertionError as e:
+            logger.error('Form Ids do not match.\n' + str(e))
 
 # todo: Compare all tags and texts --> log mismatches.
 # todo: Log where in the hierarchy of the xml - document the error occured.

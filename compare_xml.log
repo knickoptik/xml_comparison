@@ -1,5 +1,4 @@
-04/03/2020 12:35:59 PM DEBUG Parsing documents.
-04/03/2020 12:35:59 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x1058ce860>
-04/03/2020 12:35:59 PM DEBUG {'VTB_Max_Muster_Produktion.xml': <__main__.Document object at 0x1058cbfa0>}
-04/03/2020 12:35:59 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x1058ccef0>
-04/03/2020 12:35:59 PM DEBUG {'VTB_Max_Muster_Produktion.xml': <__main__.Document object at 0x1058cbfa0>, 'VTB_Max_Muster_Test.xml': <__main__.Document object at 0x1058b9220>}
+04/03/2020 03:34:16 PM DEBUG Parsing documents.
+04/03/2020 03:34:16 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x10241a860>
+04/03/2020 03:34:16 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x102419ef0>
+04/03/2020 03:34:16 PM INFO Form Ids match.
