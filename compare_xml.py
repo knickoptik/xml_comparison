@@ -44,8 +44,8 @@ class Parser:
     def get_attribute(self, tag):
         return tag.attrib
 
-    def to_string(self, element):
-        return ET.tostring(element, encoding='utf8').decode('utf8')
+    def view_tree(self, element):
+        return logger.debug(ET.tostring(element, encoding='utf8').decode('utf8'))
 
 
 class CompareXml(unittest.TestCase):
@@ -86,19 +86,23 @@ class CompareXml(unittest.TestCase):
         for file in os.listdir('data'):
             try:
                 root = cls.parser.get_root('data/' + file)
-                xml = cls.parser.find_tag(root, 'formular')
-                form_id = str(cls.parser.get_attribute(xml).get('id'))
+                form = cls.parser.find_tag(root, 'formular')
+                form_id = str(cls.parser.get_attribute(form).get('id'))
                 contract_number = cls.parser.find_tag(root, 'v_vertragsnummer')
-                cls.documents[file] = Document(form_id, contract_number, xml)
+                cls.documents[file] = Document(form_id, contract_number, root)
             except ET.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
 
     def test_compare_documents(self):
         if self.compare_form_id() and self.compare_contract_number():
             logger.debug('Comparing documents.')
-
+            for node_1 in self.get_document(0).form.iter():
+                for node_2 in self.get_document(1).form.iter():
+                    if node_1.tag == node_2.tag:
+                        logger.error('Tags match: ' + node_1.tag + ' ' + node_2.tag)
 
 # todo: Compare all tags and texts --> log mismatches.
+# todo: Set into account that some tags occur more than once in the document --> check block id
 # todo: Log where in the hierarchy of the xml - document the error occured.
 
 
