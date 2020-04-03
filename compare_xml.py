@@ -1,9 +1,11 @@
-# todo: Imports should be in a try/catch block.
-import xml.etree.ElementTree as ET
-import os
-import sys
-import logging
-import unittest
+try:
+    import xml.etree.ElementTree as ET
+    import os
+    import sys
+    import logging
+    import unittest
+except ImportError as e:
+    logging.critical('Importing dependency failed with error: ' + e)
 
 
 logging.basicConfig(
