@@ -10,7 +10,7 @@ except ImportError as e:
 
 logging.basicConfig(
     filename='compare_xml.log',
-    level=logging.INFO, filemode='w',
+    level=logging.DEBUG, filemode='w',
     format='%(asctime)s %(levelname)s %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p',
 )
@@ -133,6 +133,17 @@ class CompareXml(unittest.TestCase):
             tags = (', '.join(tags))
             logger.info(message + ': ' + tags)
 
+    def report_text_differences(self, diff, form, message):
+        for i in range(len(diff)):
+            location = self.parser.find_tag_xpath(form, diff[i])
+            parent_nodes = self.parser.get_parent_nodes(form, location)
+            texts = self.get_texts(parent_nodes)
+            # Use list comprehension to make tags more readable.
+            texts = ['<' + s + '>' for s in texts]
+            # Remove list brackets.
+            texts = (', '.join(texts))
+            logger.info(message + ': ' + texts)
+
     @classmethod
     def setUpClass(cls):
         logger.debug('Parsing documents.')
@@ -180,8 +191,14 @@ class CompareXml(unittest.TestCase):
 
         diff_prod_to_test = texts_prod.difference(texts_test)
         diff_prod_to_test = list(diff_prod_to_test)
+        logger.debug('Difference texts prod -> test: ' + str(diff_prod_to_test))
+
         diff_test_to_prod = texts_test.difference(texts_prod)
         diff_test_to_prod = list(diff_test_to_prod)
+        logger.debug('Difference texts test -> prod: ' + str(diff_test_to_prod))
+
+        # self.report_text_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
+        # self.report_text_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
 
 # todo: Compare all tags and texts -> log mismatches.
@@ -189,6 +206,7 @@ class CompareXml(unittest.TestCase):
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: Differences are recorded twice.
 # todo: Check for differences in attributes.
+# todo: Report needs to start with heading of 'v_vertragsnummer'.
 
 
 if __name__ == "__main__":
