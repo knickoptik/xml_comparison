@@ -71,11 +71,17 @@ class Parser:
         tree and prints the elements position.
         """
         func(elem, level)
+        # todo: Replace getchildren.
         for child in elem.getchildren():
             self.perf_func(child, func, level+1)
 
     def print_level(self, elem, level):
-        logger.debug('-'*level+elem.tag)
+        logger.debug(' '*level + '<' + elem.tag + '>')
+
+    def record_level(self, elem, level):
+        levels = dict()
+        levels[elem] = level
+        return levels
 
 
 class CompareXml(unittest.TestCase):
