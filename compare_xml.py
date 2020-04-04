@@ -4,8 +4,6 @@ try:
     import sys
     import logging
     import unittest
-    import xml.sax as sax
-    import xml.sax.handler as saxhandler
 except ImportError as e:
     logging.critical('Importing dependency failed with error: ' + str(e))
 
