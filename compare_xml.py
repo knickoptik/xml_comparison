@@ -55,8 +55,12 @@ class Parser:
             logger.debug('Tag located at: ' + location.tag)
             return location
 
-    def get_parent_nodes(self, tree):
-        print('parent nodes')
+    def get_parent_nodes(self, tree, node):
+        children = self.get_children(tree)
+        logger.debug(children)
+        temp = children.index(node) + 1
+        res = children[:temp]
+        logger.debug('Parent nodes are: ' + str(res))
 
 
 class CompareXml(unittest.TestCase):
@@ -134,9 +138,12 @@ class CompareXml(unittest.TestCase):
 
         logger.debug(tags_test.difference(tags_prod))
 
-        for i in range(len(diff_prod_to_test)):
-            location = self.parser.find_tag_xpath(self.get_document(0).form, diff_prod_to_test[i])
-            # self.parser.get_parent(location, location.tag)
+        location = self.parser.find_tag_xpath(self.get_document(0).form, diff_prod_to_test[0])
+        self.parser.get_parent_nodes(self.get_document(0).form, location)
+
+        # for i in range(len(diff_prod_to_test)):
+        #     location = self.parser.find_tag_xpath(self.get_document(0).form, diff_prod_to_test[i])
+        #     self.parser.get_parent_nodes(self.get_document(0).form, location)
 
     def test_text_differences(self):
         children_prod = self.parser.get_children(self.get_document(0).form)
