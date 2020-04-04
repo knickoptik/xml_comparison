@@ -57,7 +57,7 @@ class Parser:
 
     def get_parent_nodes(self, tree, node):
         children = self.get_children(tree)
-        logger.debug(children)
+        logger.debug('Complete form tree: ' + str(children))
         temp = children.index(node) + 1
         res = children[:temp]
         logger.debug('Parent nodes are: ' + str(res))
