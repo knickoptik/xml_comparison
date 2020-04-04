@@ -1,7 +1,7 @@
-04/04/2020 12:03:27 AM DEBUG Parsing documents.
-04/04/2020 12:03:27 AM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x1018a0e50>
-04/04/2020 12:03:27 AM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x1018a5540>
-04/04/2020 12:03:27 AM DEBUG {'v_must_bezeichnung', 'v_vertragsdatum'}
-04/04/2020 12:03:27 AM DEBUG {'v_mus_bezeichnung', 'zusatz', 'test', 'v_vertragsdat'}
-04/04/2020 12:03:27 AM DEBUG Difference is in element: v_must_bezeichnung
-04/04/2020 12:03:27 AM DEBUG Difference is in element: v_vertragsdatum
+04/04/2020 12:19:56 PM DEBUG Parsing documents.
+04/04/2020 12:19:56 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x10dae0f40>
+04/04/2020 12:19:56 PM DEBUG Created document: Form ID - 996511, Contract Number - <Element 'v_vertragsnummer' at 0x10dae5630>
+04/04/2020 12:19:56 PM DEBUG {'v_vertragsdatum', 'v_must_bezeichnung'}
+04/04/2020 12:19:56 PM DEBUG {'v_mus_bezeichnung', 'zusatz', 'test', 'v_vertragsdat'}
+04/04/2020 12:19:56 PM DEBUG Tag located at: v_vertragsdatum
+04/04/2020 12:19:56 PM DEBUG Tag located at: v_must_bezeichnung

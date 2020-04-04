@@ -37,6 +37,9 @@ class Parser:
         tree = ET.parse(file)
         return tree.getroot()
 
+    def get_children(self, tree):
+        return list(tree.iter())
+
     def find_tag(self, root, tag_name):
         for tag in root.iter(tag_name):
             return tag
@@ -47,15 +50,13 @@ class Parser:
     def view_tree(self, element):
         return logger.debug(ET.tostring(element, encoding='utf8').decode('utf8'))
 
-    def location_of_diff_in_document(self, tree, item: str):
+    def find_tag_xpath(self, tree, item: str):
         for location in tree.findall('.//' + item):
-            logger.debug('Difference is in element: ' + location.tag)
+            logger.debug('Tag located at: ' + location.tag)
             return location
 
-    # def get_parent(self, tree, item: str):
-    #     for parent in tree.findall('.//{}/..'.format(item)):
-    #         logger.debug('Parent is: ' + parent.tag)
-    #         return parent
+    def get_parent_nodes(self, tree):
+        print('parent nodes')
 
 
 class CompareXml(unittest.TestCase):
@@ -64,9 +65,6 @@ class CompareXml(unittest.TestCase):
 
     def get_document(self, index):
         return list(self.documents.items())[index][1]
-
-    def get_children(self, tree):
-        return list(tree.iter())
 
     def get_tags(self, elements):
         tags = []
@@ -120,8 +118,8 @@ class CompareXml(unittest.TestCase):
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
 
     def test_tag_differences(self):
-        children_prod = self.get_children(self.get_document(0).form)
-        children_test = self.get_children(self.get_document(1).form)
+        children_prod = self.parser.get_children(self.get_document(0).form)
+        children_test = self.parser.get_children(self.get_document(1).form)
         tags_prod = self.get_tags(children_prod)
         tags_test = self.get_tags(children_test)
         tags_prod = set(tags_prod)
@@ -137,12 +135,12 @@ class CompareXml(unittest.TestCase):
         logger.debug(tags_test.difference(tags_prod))
 
         for i in range(len(diff_prod_to_test)):
-            location = self.parser.location_of_diff_in_document(self.get_document(0).form, diff_prod_to_test[i])
+            location = self.parser.find_tag_xpath(self.get_document(0).form, diff_prod_to_test[i])
             # self.parser.get_parent(location, location.tag)
 
     def test_text_differences(self):
-        children_prod = self.get_children(self.get_document(0).form)
-        children_test = self.get_children(self.get_document(1).form)
+        children_prod = self.parser.get_children(self.get_document(0).form)
+        children_test = self.parser.get_children(self.get_document(1).form)
         texts_prod = self.get_texts(children_prod)
         texts_test = self.get_texts(children_test)
         texts_prod = set(texts_prod)
