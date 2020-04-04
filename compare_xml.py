@@ -123,6 +123,17 @@ class CompareXml(unittest.TestCase):
         except TypeError as e:
             logger.error('File is not in xml format.\n' + str(e))
 
+    # todo: No message in case there are no differences.
+    def report_tag_differences(self, diff, form, message):
+        for i in range(len(diff)):
+            location = self.parser.find_tag_xpath(form, diff[i])
+            parent_nodes = self.parser.get_parent_nodes(form, location)
+            tags = self.get_tags(parent_nodes)
+            # Use list comprehension to make tags more readable.
+            tags = ['<' + s + '>' for s in tags]
+            # Remove list brackets.
+            tags = (', '.join(tags))
+            logger.info(message + ': ' + tags)
 
     @classmethod
     def setUpClass(cls):
@@ -157,15 +168,8 @@ class CompareXml(unittest.TestCase):
 
         logger.debug('Difference tags test -> prod: ' + str(diff_test_to_prod))
 
-        for i in range(len(diff_prod_to_test)):
-            location = self.parser.find_tag_xpath(self.get_document(0).form, diff_prod_to_test[i])
-            parent_nodes = self.parser.get_parent_nodes(self.get_document(0).form, location)
-            tags = self.get_tags(parent_nodes)
-            # Use list comprehension to make tags more readable.
-            tags = ['<' + s + '>' for s in tags]
-            # Remove list brackets.
-            tags = (', '.join(tags))
-            logger.info('Difference prod -> test: ' + tags)
+        self.report_tag_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
+        self.report_tag_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
     def test_text_differences(self):
         children_prod = self.parser.get_children(self.get_document(0).form)
