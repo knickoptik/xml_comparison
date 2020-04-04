@@ -151,21 +151,22 @@ class CompareXml(unittest.TestCase):
 
     # todo: Eventuell refactoring: Differences ermitteln tags / texts.
     def test_tag_differences(self):
+        # Get all nodes.
         children_prod = self.parser.get_children(self.get_document(0).form)
         children_test = self.parser.get_children(self.get_document(1).form)
+        # Get all node tags.
         tags_prod = self.get_tags(children_prod)
         tags_test = self.get_tags(children_test)
+
         tags_prod = set(tags_prod)
         tags_test = set(tags_test)
 
         diff_prod_to_test = tags_prod.difference(tags_test)
         diff_prod_to_test = list(diff_prod_to_test)
-
         logger.debug('Difference tags prod -> test: ' + str(diff_prod_to_test))
 
         diff_test_to_prod = tags_test.difference(tags_prod)
         diff_test_to_prod = list(diff_test_to_prod)
-
         logger.debug('Difference tags test -> prod: ' + str(diff_test_to_prod))
 
         self.report_tag_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
@@ -189,6 +190,7 @@ class CompareXml(unittest.TestCase):
 # todo: Save level of each element in root tree to retain knowledge about hierarchy.
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: Differences are recorded twice.
+# todo: Check for differences in attributes.
 
 
 if __name__ == "__main__":
