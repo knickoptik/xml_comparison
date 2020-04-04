@@ -12,7 +12,7 @@ except ImportError as e:
 
 logging.basicConfig(
     filename='compare_xml.log',
-    level=logging.DEBUG, filemode='w',
+    level=logging.INFO, filemode='w',
     format='%(asctime)s %(levelname)s %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p',
 )
@@ -123,6 +123,7 @@ class CompareXml(unittest.TestCase):
         except TypeError as e:
             logger.error('File is not in xml format.\n' + str(e))
 
+
     @classmethod
     def setUpClass(cls):
         logger.debug('Parsing documents.')
@@ -137,6 +138,7 @@ class CompareXml(unittest.TestCase):
             except ET.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
 
+    # todo: Eventuell refactoring: Differences ermitteln tags / texts.
     def test_tag_differences(self):
         children_prod = self.parser.get_children(self.get_document(0).form)
         children_test = self.parser.get_children(self.get_document(1).form)
@@ -172,8 +174,12 @@ class CompareXml(unittest.TestCase):
         texts_test = self.get_texts(children_test)
         texts_prod = set(texts_prod)
         texts_test = set(texts_test)
-        #logger.debug(texts_prod.difference(texts_test))
-        #logger.debug(texts_test.difference(texts_prod))
+
+        diff_prod_to_test = texts_prod.difference(texts_test)
+        diff_prod_to_test = list(diff_prod_to_test)
+        diff_test_to_prod = texts_test.difference(texts_prod)
+        diff_test_to_prod = list(diff_test_to_prod)
+
 
 # todo: Compare all tags and texts -> log mismatches.
 # todo: Save level of each element in root tree to retain knowledge about hierarchy.
