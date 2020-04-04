@@ -69,9 +69,6 @@ class Parser:
         """
         Recursive function that records the level of an element in the
         tree and prints the elements position.
-        :param elem:
-        :param func:
-        :param level:
         """
         func(elem, level)
         for child in elem.getchildren():
