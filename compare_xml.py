@@ -1,5 +1,5 @@
 try:
-    import xml.etree.ElementTree as ET
+    from lxml import etree
     import os
     import sys
     import logging
@@ -33,9 +33,9 @@ class Parser:
     def __init__(self, documents: dict):
         self.documents = documents
 
-    def get_root(self, file):
-        tree = ET.parse(file)
-        return tree.getroot()
+    def parse_file(self, xml):
+        parser = etree.XMLParser(remove_comments=True)
+        return etree.parse(xml, parser)
 
     def get_children(self, tree):
         return list(tree.iter())
@@ -47,8 +47,8 @@ class Parser:
     def get_attribute(self, tag):
         return tag.attrib
 
-    def view_tree(self, element):
-        return logger.debug(ET.tostring(element, encoding='utf8').decode('utf8'))
+    # def view_tree(self, element):
+    #     return logger.debug(ET.tostring(element, encoding='utf8').decode('utf8'))
 
     def find_tag_xpath(self, tree, item: str):
         for location in tree.findall('.//' + item):
@@ -84,7 +84,6 @@ class Parser:
 
 class CompareXml(unittest.TestCase):
     documents = dict()
-    hierarchy_prod = dict()
     parser: Parser = None
 
     def get_document(self, index):
@@ -156,12 +155,13 @@ class CompareXml(unittest.TestCase):
         cls.parser = Parser(cls.documents)
         for file in os.listdir('data'):
             try:
-                root = cls.parser.get_root('data/' + file)
+                tree = cls.parser.parse_file('data/' + file)
+                root = tree.getroot()
                 form = cls.parser.find_tag(root, 'formular')
                 form_id = str(cls.parser.get_attribute(form).get('id'))
                 contract_number = cls.parser.find_tag(root, 'v_vertragsnummer')
                 cls.documents[file] = Document(form_id, contract_number, root)
-            except ET.ParseError as e:
+            except etree.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
 
     # todo: Eventuell refactoring: Differences ermitteln tags / texts.
@@ -206,7 +206,7 @@ class CompareXml(unittest.TestCase):
         # self.report_text_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
         # self.report_text_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
-        logger.info(self.parser.find_tag_by_text_xpath(self.get_document(0).form, '19,00'))
+        # logger.info(self.parser.find_tag_by_text_xpath(self.get_document(0).form, '19,00'))
 
 
 # todo: Compare all tags and texts -> log mismatches.
@@ -214,6 +214,7 @@ class CompareXml(unittest.TestCase):
 # todo: Differences are recorded twice.
 # todo: Check for differences in attributes.
 # todo: Report needs to start with heading of 'v_vertragsnummer'.
+# todo: lxml also parses comments.
 
 
 if __name__ == "__main__":
