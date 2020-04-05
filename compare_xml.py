@@ -10,7 +10,7 @@ except ImportError as e:
 
 logging.basicConfig(
     filename='compare_xml.log',
-    level=logging.DEBUG, filemode='w',
+    level=logging.INFO, filemode='w',
     format='%(asctime)s %(levelname)s %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p',
 )
@@ -52,6 +52,11 @@ class Parser:
 
     def find_tag_xpath(self, tree, item: str):
         for location in tree.findall('.//' + item):
+            logger.debug('Tag located at: ' + location.tag)
+            return location
+
+    def find_tag_by_text_xpath(self, tree, item: str):
+        for location in tree.findall('.//*[text()="{}"]'.format(item)):
             logger.debug('Tag located at: ' + location.tag)
             return location
 
@@ -135,7 +140,8 @@ class CompareXml(unittest.TestCase):
 
     def report_text_differences(self, diff, form, message):
         for i in range(len(diff)):
-            location = self.parser.find_tag_xpath(form, diff[i])
+            # todo: Find by function does not work with text.
+            location = self.parser.find_tag_by_text_xpath(form, diff[i])
             parent_nodes = self.parser.get_parent_nodes(form, location)
             texts = self.get_texts(parent_nodes)
             # Use list comprehension to make tags more readable.
@@ -200,9 +206,10 @@ class CompareXml(unittest.TestCase):
         # self.report_text_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
         # self.report_text_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
+        logger.info(self.parser.find_tag_by_text_xpath(self.get_document(0).form, '19,00'))
+
 
 # todo: Compare all tags and texts -> log mismatches.
-# todo: Save level of each element in root tree to retain knowledge about hierarchy.
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: Differences are recorded twice.
 # todo: Check for differences in attributes.
