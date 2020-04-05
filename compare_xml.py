@@ -10,7 +10,7 @@ except ImportError as e:
 
 logging.basicConfig(
     filename='compare_xml.log',
-    level=logging.INFO, filemode='w',
+    level=logging.DEBUG, filemode='w',
     format='%(asctime)s %(levelname)s %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p',
 )
@@ -50,19 +50,18 @@ class Parser:
     # def view_tree(self, element):
     #     return logger.debug(ET.tostring(element, encoding='utf8').decode('utf8'))
 
-    def find_tag_xpath(self, tree, item: str):
+    def find_tag_by_name_xpath(self, tree, item: str):
         for location in tree.findall('.//' + item):
             logger.debug('Tag located at: ' + location.tag)
             return location
 
     def find_tag_by_text_xpath(self, tree, item: str):
-        for location in tree.findall('.//*[text()="{}"]'.format(item)):
+        for location in tree.xpath('.//*[contains(text(),"{}")]'.format(item)):
             logger.debug('Tag located at: ' + location.tag)
             return location
 
     def get_parent_nodes(self, tree, node):
         children = self.get_children(tree)
-        logger.debug('Complete form tree: ' + str(children))
         temp = children.index(node) + 1
         res = children[:temp]
         logger.debug('Parent nodes are: ' + str(res))
@@ -128,7 +127,7 @@ class CompareXml(unittest.TestCase):
     # todo: No message in case there are no differences.
     def report_tag_differences(self, diff, form, message):
         for i in range(len(diff)):
-            location = self.parser.find_tag_xpath(form, diff[i])
+            location = self.parser.find_tag_by_name_xpath(form, diff[i])
             parent_nodes = self.parser.get_parent_nodes(form, location)
             tags = self.get_tags(parent_nodes)
             # Use list comprehension to make tags more readable.
@@ -142,7 +141,7 @@ class CompareXml(unittest.TestCase):
             # todo: Find by function does not work with text.
             location = self.parser.find_tag_by_text_xpath(form, diff[i])
             parent_nodes = self.parser.get_parent_nodes(form, location)
-            texts = self.get_texts(parent_nodes)
+            texts = self.get_tags(parent_nodes)
             # Use list comprehension to make tags more readable.
             texts = ['<' + s + '>' for s in texts]
             # Remove list brackets.
@@ -184,8 +183,8 @@ class CompareXml(unittest.TestCase):
         diff_test_to_prod = list(diff_test_to_prod)
         logger.debug('Difference tags test -> prod: ' + str(diff_test_to_prod))
 
-        self.report_tag_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
-        self.report_tag_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
+        # self.report_tag_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
+        # self.report_tag_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
     def test_text_differences(self):
         children_prod = self.parser.get_children(self.get_document(0).form)
@@ -203,7 +202,7 @@ class CompareXml(unittest.TestCase):
         diff_test_to_prod = list(diff_test_to_prod)
         logger.debug('Difference texts test -> prod: ' + str(diff_test_to_prod))
 
-        # self.report_text_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
+        self.report_text_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
         # self.report_text_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
         # logger.info(self.parser.find_tag_by_text_xpath(self.get_document(0).form, '19,00'))
@@ -214,7 +213,6 @@ class CompareXml(unittest.TestCase):
 # todo: Differences are recorded twice.
 # todo: Check for differences in attributes.
 # todo: Report needs to start with heading of 'v_vertragsnummer'.
-# todo: lxml also parses comments.
 
 
 if __name__ == "__main__":
