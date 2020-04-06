@@ -100,7 +100,7 @@ class CompareXml(unittest.TestCase):
     def compare_form_id(self):
         try:
             self.assertEqual(self.get_document(0).form_id, self.get_document(1).form_id)
-            logger.info('Form Ids match.')
+            logger.debug('Form Ids match.')
         except AssertionError as e:
             logger.error('Form Ids do not match.\n' + str(e))
         else:
@@ -109,11 +109,18 @@ class CompareXml(unittest.TestCase):
     def compare_contract_number(self):
         try:
             self.assertEqual(self.get_document(0).contract_number.text, self.get_document(1).contract_number.text)
-            logger.info('Contract numbers match.')
+            logger.debug('Contract numbers match.')
         except AssertionError as e:
             logger.error('Contract numbers do not match.\n' + str(e))
         else:
             return True
+
+    def check_preconditions(self):
+        if self.compare_form_id() and self.compare_contract_number():
+            logger.info('Starting test.')
+        else:
+            logger.error('Exiting test.')
+            raise AssertionError
 
     def file_is_xml(self, file):
         try:
@@ -144,17 +151,11 @@ class CompareXml(unittest.TestCase):
             texts = (', '.join(texts))
             logger.info(message + ': ' + texts)
 
-    def precondition(self):
-        if self.compare_form_id() and self.compare_contract_number():
-            logger.debug('Form id and contract number match: Starting test.')
-        else:
-            logger.error('Form id and contract number do not match: Exiting test.')
-            raise AssertionError
-
     @classmethod
     def setUpClass(cls):
         logger.debug('Parsing documents.')
         cls.parser = Parser(cls.documents)
+        precondition = CompareXml()
         for file in os.listdir('data'):
             try:
                 tree = cls.parser.parse_file('data/' + file)
@@ -165,13 +166,7 @@ class CompareXml(unittest.TestCase):
                 cls.documents[file] = Document(form_id, contract_number, root)
             except etree.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
-
-    # def setUp(self):
-    #     if self.compare_form_id() and self.compare_contract_number():
-    #         logger.debug('Form id and contract number match: Starting test.')
-    #     else:
-    #         logger.error('Form id and contract number do not match: Exiting test.')
-    #         raise AssertionError
+        precondition.check_preconditions()
 
     # todo: Eventuell refactoring: Differences ermitteln tags / texts.
     def test_tag_differences(self):
@@ -222,7 +217,6 @@ class CompareXml(unittest.TestCase):
 # todo: User friendly report at INFO level.
 # todo: Test Suite passes when no differences are found and reports success.
 #  Reports differences when there are failed test cases.
-# todo: Form id and contract number are only checked once not before each test case?
 
 
 if __name__ == "__main__":
