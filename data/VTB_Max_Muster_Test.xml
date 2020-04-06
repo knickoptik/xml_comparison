@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="windows-1252" ?>
-<formular id="996510">
+<formular id="996511">
 
 <!--AB_4_XAM  Vertragsbestätigung                               KVASY                         -->
   <abschlagsformular>
@@ -39,7 +39,7 @@
           <v_tarif_all_inclusive_tarif>J</v_tarif_all_inclusive_tarif>
           <v_tarif_grundversorgungstarif>N</v_tarif_grundversorgungstarif>
           <v_tarif_ersatzversorgungstarif>N</v_tarif_ersatzversorgungstarif>
-          <v_vertragsnummer>5858585858-S001.002</v_vertragsnummer>
+          <v_vertragsnummer>5858585858-S001.001</v_vertragsnummer>
           <v_vertragsdat></v_vertragsdat>
           <v_abrechnung_id>1875126</v_abrechnung_id>
           <v_verbrauchsart>Strom SLP</v_verbrauchsart>

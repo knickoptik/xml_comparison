@@ -117,7 +117,7 @@ class CompareXml(unittest.TestCase):
 
     def check_preconditions(self):
         if self.compare_form_id() and self.compare_contract_number():
-            logger.info('Starting test.')
+            logger.info('Starting test suite for contract number ' + str(self.get_document(0).contract_number.text) + '\n')
         else:
             logger.error('Exiting test.')
             raise AssertionError
@@ -213,7 +213,6 @@ class CompareXml(unittest.TestCase):
 # todo: Check for differences in attributes.
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: Differences are recorded twice.
-# todo: Report needs to start with heading of 'v_vertragsnummer'.
 # todo: User friendly report at INFO level.
 # todo: Test Suite passes when no differences are found and reports success.
 #  Reports differences when there are failed test cases.
