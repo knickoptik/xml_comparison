@@ -10,7 +10,7 @@ except ImportError as e:
 
 logging.basicConfig(
     filename='compare_xml.log',
-    level=logging.DEBUG, filemode='w',
+    level=logging.INFO, filemode='w',
     format='%(asctime)s %(levelname)s %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p',
 )
@@ -46,9 +46,6 @@ class Parser:
 
     def get_attribute(self, tag):
         return tag.attrib
-
-    # def view_tree(self, element):
-    #     return logger.debug(ET.tostring(element, encoding='utf8').decode('utf8'))
 
     def find_tag_by_name_xpath(self, tree, item: str):
         for location in tree.findall('.//' + item):
@@ -138,7 +135,6 @@ class CompareXml(unittest.TestCase):
 
     def report_text_differences(self, diff, form, message):
         for i in range(len(diff)):
-            # todo: Find by function does not work with text.
             location = self.parser.find_tag_by_text_xpath(form, diff[i])
             parent_nodes = self.parser.get_parent_nodes(form, location)
             texts = self.get_tags(parent_nodes)
@@ -147,6 +143,13 @@ class CompareXml(unittest.TestCase):
             # Remove list brackets.
             texts = (', '.join(texts))
             logger.info(message + ': ' + texts)
+
+    def precondition(self):
+        if self.compare_form_id() and self.compare_contract_number():
+            logger.debug('Form id and contract number match: Starting test.')
+        else:
+            logger.error('Form id and contract number do not match: Exiting test.')
+            raise AssertionError
 
     @classmethod
     def setUpClass(cls):
@@ -162,6 +165,13 @@ class CompareXml(unittest.TestCase):
                 cls.documents[file] = Document(form_id, contract_number, root)
             except etree.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
+
+    # def setUp(self):
+    #     if self.compare_form_id() and self.compare_contract_number():
+    #         logger.debug('Form id and contract number match: Starting test.')
+    #     else:
+    #         logger.error('Form id and contract number do not match: Exiting test.')
+    #         raise AssertionError
 
     # todo: Eventuell refactoring: Differences ermitteln tags / texts.
     def test_tag_differences(self):
@@ -183,8 +193,8 @@ class CompareXml(unittest.TestCase):
         diff_test_to_prod = list(diff_test_to_prod)
         logger.debug('Difference tags test -> prod: ' + str(diff_test_to_prod))
 
-        # self.report_tag_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
-        # self.report_tag_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
+        self.report_tag_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
+        self.report_tag_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
     def test_text_differences(self):
         children_prod = self.parser.get_children(self.get_document(0).form)
@@ -203,16 +213,16 @@ class CompareXml(unittest.TestCase):
         logger.debug('Difference texts test -> prod: ' + str(diff_test_to_prod))
 
         self.report_text_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
-        # self.report_text_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
+        self.report_text_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
-        # logger.info(self.parser.find_tag_by_text_xpath(self.get_document(0).form, '19,00'))
-
-
-# todo: Compare all tags and texts -> log mismatches.
+# todo: Check for differences in attributes.
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: Differences are recorded twice.
-# todo: Check for differences in attributes.
 # todo: Report needs to start with heading of 'v_vertragsnummer'.
+# todo: User friendly report at INFO level.
+# todo: Test Suite passes when no differences are found and reports success.
+#  Reports differences when there are failed test cases.
+# todo: Form id and contract number are only checked once not before each test case?
 
 
 if __name__ == "__main__":
