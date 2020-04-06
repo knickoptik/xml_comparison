@@ -138,7 +138,7 @@ class CompareXml(unittest.TestCase):
             tags = ['<' + s + '>' for s in tags]
             # Remove list brackets.
             tags = (', '.join(tags))
-            logger.info(message + ': ' + tags)
+            logger.info(message + ': ' + tags + '\n')
 
     def report_text_differences(self, diff, form, message):
         for i in range(len(diff)):
@@ -149,7 +149,7 @@ class CompareXml(unittest.TestCase):
             texts = ['<' + s + '>' for s in texts]
             # Remove list brackets.
             texts = (', '.join(texts))
-            logger.info(message + ': ' + texts)
+            logger.info(message + ': ' + texts + '\n')
 
     @classmethod
     def setUpClass(cls):
@@ -170,6 +170,7 @@ class CompareXml(unittest.TestCase):
 
     # todo: Eventuell refactoring: Differences ermitteln tags / texts.
     def test_tag_differences(self):
+        logger.info('Checking xml files for differences in tags.\n')
         # Get all nodes.
         children_prod = self.parser.get_children(self.get_document(0).form)
         children_test = self.parser.get_children(self.get_document(1).form)
@@ -192,6 +193,7 @@ class CompareXml(unittest.TestCase):
         self.report_tag_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
 
     def test_text_differences(self):
+        logger.info('Checking xml files for differences in text content.\n')
         children_prod = self.parser.get_children(self.get_document(0).form)
         children_test = self.parser.get_children(self.get_document(1).form)
         texts_prod = self.get_texts(children_prod)
