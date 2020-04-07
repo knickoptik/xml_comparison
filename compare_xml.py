@@ -138,18 +138,18 @@ class CompareXml(unittest.TestCase):
             tags = ['<' + s + '>' for s in tags]
             # Remove list brackets.
             tags = (', '.join(tags))
-            logger.info(message + ': ' + tags + '\n')
+            logger.info('{}: Tag located at {}\n'.format(message, tags))
 
     def report_text_differences(self, diff, form, message):
         for i in range(len(diff)):
             location = self.parser.find_tag_by_text_xpath(form, diff[i])
             parent_nodes = self.parser.get_parent_nodes(form, location)
-            texts = self.get_tags(parent_nodes)
+            texts_location = self.get_tags(parent_nodes)
             # Use list comprehension to make tags more readable.
-            texts = ['<' + s + '>' for s in texts]
+            texts_location = ['<' + s + '>' for s in texts_location]
             # Remove list brackets.
-            texts = (', '.join(texts))
-            logger.info(message + ': ' + texts + '\n')
+            texts = (', '.join(texts_location))
+            logger.info('{}: "{}" located at {}\n'.format(message, location.text, texts))
 
     @classmethod
     def setUpClass(cls):
@@ -188,6 +188,8 @@ class CompareXml(unittest.TestCase):
         diff_test_to_prod = tags_test.difference(tags_prod)
         diff_test_to_prod = list(diff_test_to_prod)
         logger.debug('Difference tags test -> prod: ' + str(diff_test_to_prod))
+        # todo: Test Suite passes when no differences are found and reports success.
+        # if len(diff_test_to_prod) == 0:
 
         self.report_tag_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
         self.report_tag_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
@@ -216,18 +218,10 @@ class CompareXml(unittest.TestCase):
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: Differences are recorded twice.
 # todo: User friendly report at INFO level.
-# todo: Test Suite passes when no differences are found and reports success.
-#  Reports differences when there are failed test cases.
 
 
 if __name__ == "__main__":
     unittest.main()
-
-# if self.compare_form_id() and self.compare_contract_number():
-#     for node_1 in self.get_document(0).form.iter():
-#         for node_2 in self.get_document(1).form.iter():
-#             if node_1.tag == node_2.tag:
-#                 logger.error('Tags match: ' + node_1.tag + ' ' + node_2.tag)
 
 # def test_print_tree_recursive(self):
 #     root = self.get_document(0).form
