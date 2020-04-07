@@ -131,25 +131,24 @@ class CompareXml(unittest.TestCase):
     # todo: No message in case there are no differences.
     def report_tag_differences(self, diff, form, message):
         for i in range(len(diff)):
-            location = self.parser.find_tag_by_name_xpath(form, diff[i])
-            parent_nodes = self.parser.get_parent_nodes(form, location)
-            tags = self.get_tags(parent_nodes)
-            # Use list comprehension to make tags more readable.
-            tags = ['<' + s + '>' for s in tags]
-            # Remove list brackets.
-            tags = (', '.join(tags))
-            logger.info('{}: Tag located at {}\n'.format(message, tags))
+            difference = self.parser.find_tag_by_name_xpath(form, diff[i])
+            location = self.localize_difference(form, difference)
+            logger.info('{}: Tag located at {}\n'.format(message, location))
 
     def report_text_differences(self, diff, form, message):
         for i in range(len(diff)):
-            location = self.parser.find_tag_by_text_xpath(form, diff[i])
-            parent_nodes = self.parser.get_parent_nodes(form, location)
-            texts_location = self.get_tags(parent_nodes)
-            # Use list comprehension to make tags more readable.
-            texts_location = ['<' + s + '>' for s in texts_location]
-            # Remove list brackets.
-            texts = (', '.join(texts_location))
-            logger.info('{}: "{}" located at {}\n'.format(message, location.text, texts))
+            difference = self.parser.find_tag_by_text_xpath(form, diff[i])
+            location = self.localize_difference(form, difference)
+            logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
+
+    def localize_difference(self, form, location):
+        parent_nodes = self.parser.get_parent_nodes(form, location)
+        location = self.get_tags(parent_nodes)
+        # Use list comprehension to make tags more readable.
+        location = ['<' + s + '>' for s in location]
+        # Remove list brackets.
+        location = (', '.join(location))
+        return location
 
     @classmethod
     def setUpClass(cls):
