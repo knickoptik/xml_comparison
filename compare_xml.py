@@ -128,6 +128,15 @@ class CompareXml(unittest.TestCase):
         except TypeError as e:
             logger.error('File is not in xml format.\n' + str(e))
 
+    def localize_difference(self, form, location):
+        parent_nodes = self.parser.get_parent_nodes(form, location)
+        location = self.get_tags(parent_nodes)
+        # Use list comprehension to make tags more readable.
+        location = ['<' + s + '>' for s in location]
+        # Remove list brackets.
+        location = (', '.join(location))
+        return location
+
     # todo: No message in case there are no differences.
     def report_tag_differences(self, diff, form, message):
         for i in range(len(diff)):
@@ -140,15 +149,6 @@ class CompareXml(unittest.TestCase):
             difference = self.parser.find_tag_by_text_xpath(form, diff[i])
             location = self.localize_difference(form, difference)
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
-
-    def localize_difference(self, form, location):
-        parent_nodes = self.parser.get_parent_nodes(form, location)
-        location = self.get_tags(parent_nodes)
-        # Use list comprehension to make tags more readable.
-        location = ['<' + s + '>' for s in location]
-        # Remove list brackets.
-        location = (', '.join(location))
-        return location
 
     @classmethod
     def setUpClass(cls):
