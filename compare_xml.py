@@ -4,13 +4,14 @@ try:
     import sys
     import logging
     import unittest
+    from collections import OrderedDict
 except ImportError as e:
     logging.critical('Importing dependency failed with error: ' + str(e))
 
 
 logging.basicConfig(
     filename='compare_xml.log',
-    level=logging.INFO, filemode='w',
+    level=logging.DEBUG, filemode='w',
     format='%(asctime)s %(levelname)s %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p',
 )
@@ -150,6 +151,14 @@ class CompareXml(unittest.TestCase):
             location = self.localize_difference(form, difference)
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
 
+    def get_attributes(self, elements):
+        attributes = OrderedDict()
+        for child in elements:
+            if child.attrib:
+                attributes[child.tag] = child.attrib
+        logger.debug('Attributes are: ' + str(attributes))
+        return attributes
+
     @classmethod
     def setUpClass(cls):
         logger.debug('Parsing documents.')
@@ -208,6 +217,17 @@ class CompareXml(unittest.TestCase):
 
         self.report_text_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
         self.report_text_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
+
+    def test_attribute_differences(self):
+        logger.info('Checking xml files for differences in attributes.\n')
+        children_prod = self.parser.get_children(self.get_document(0).form)
+        children_test = self.parser.get_children(self.get_document(1).form)
+        # Get elements that have an attribute.
+        attributes_prod = self.get_attributes(children_prod)
+        attributes_test = self.get_attributes(children_test)
+
+        for i, j in zip(attributes_prod.items(), attributes_test.items()):
+            self.assertEqual(i, j)
 
 # todo: Check for differences in attributes.
 # todo: Encapsulation -> Getter and setter for object properties.
