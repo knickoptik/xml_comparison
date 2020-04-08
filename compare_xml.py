@@ -167,55 +167,50 @@ class CompareXml(unittest.TestCase):
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
         precondition.check_preconditions()
 
+    def retrieve_differences(self, list_prod, list_test):
+        # Get all node tags.
+        tags_prod = set(list_prod)
+        tags_test = set(list_test)
+        diff_prod_to_test = tags_prod.difference(tags_test)
+        diff_prod_to_test = list(diff_prod_to_test)
+        logger.debug('Difference texts prod -> test: ' + str(diff_prod_to_test))
+        diff_test_to_prod = tags_test.difference(tags_prod)
+        diff_test_to_prod = list(diff_test_to_prod)
+        logger.debug('Difference texts test -> prod: ' + str(diff_test_to_prod))
+        return [diff_prod_to_test, diff_test_to_prod]
+
     # todo: Eventuell refactoring: Differences ermitteln tags / texts.
     def test_tag_differences(self):
         logger.info('Checking xml files for differences in tags.\n')
         # Get all nodes.
         children_prod = self.parser.get_children(self.get_document(0).form)
         children_test = self.parser.get_children(self.get_document(1).form)
-        # Get all node tags.
+
         tags_prod = self.get_tags(children_prod)
         tags_test = self.get_tags(children_test)
 
-        tags_prod = set(tags_prod)
-        tags_test = set(tags_test)
-
-        diff_prod_to_test = tags_prod.difference(tags_test)
-        diff_prod_to_test = list(diff_prod_to_test)
-        logger.debug('Difference tags prod -> test: ' + str(diff_prod_to_test))
-
-        diff_test_to_prod = tags_test.difference(tags_prod)
-        diff_test_to_prod = list(diff_test_to_prod)
-        logger.debug('Difference tags test -> prod: ' + str(diff_test_to_prod))
         # todo: Test Suite passes when no differences are found and reports success.
         # if len(diff_test_to_prod) == 0:
+        diff = self.retrieve_differences(tags_prod, tags_test)
 
-        self.report_tag_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
-        self.report_tag_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
+        self.report_tag_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
+        self.report_tag_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
 
     def test_text_differences(self):
         logger.info('Checking xml files for differences in text content.\n')
         children_prod = self.parser.get_children(self.get_document(0).form)
         children_test = self.parser.get_children(self.get_document(1).form)
+
         texts_prod = self.get_texts(children_prod)
         texts_test = self.get_texts(children_test)
-        texts_prod = set(texts_prod)
-        texts_test = set(texts_test)
 
-        diff_prod_to_test = texts_prod.difference(texts_test)
-        diff_prod_to_test = list(diff_prod_to_test)
-        logger.debug('Difference texts prod -> test: ' + str(diff_prod_to_test))
+        diff = self.retrieve_differences(texts_prod, texts_test)
 
-        diff_test_to_prod = texts_test.difference(texts_prod)
-        diff_test_to_prod = list(diff_test_to_prod)
-        logger.debug('Difference texts test -> prod: ' + str(diff_test_to_prod))
-
-        self.report_text_differences(diff_prod_to_test, self.get_document(0).form, 'Difference prod -> test')
-        self.report_text_differences(diff_test_to_prod, self.get_document(1).form, 'Difference test -> prod')
+        self.report_text_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
+        self.report_text_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
 
 # todo: Check for differences in attributes.
 # todo: Encapsulation -> Getter and setter for object properties.
-# todo: Differences are recorded twice.
 # todo: User friendly report at INFO level.
 
 
