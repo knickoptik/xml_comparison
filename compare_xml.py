@@ -231,7 +231,6 @@ class CompareXml(unittest.TestCase):
             self.assertEqual(i, j)
 
 
-# todo: Check for differences in attributes.
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
 # todo: Replace ordered dict with dict -> ordered since python 3.6.
