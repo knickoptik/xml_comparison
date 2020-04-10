@@ -226,7 +226,6 @@ class CompareXml(unittest.TestCase):
         # Get elements that have an attribute.
         attributes_prod = self.get_attributes(children_prod)
         attributes_test = self.get_attributes(children_test)
-        # todo: Zip function truncates the result.
         for i, j in zip(attributes_prod.items(), attributes_test.items()):
             self.assertEqual(i, j)
 
