@@ -4,7 +4,6 @@ try:
     import sys
     import logging
     import unittest
-    from collections import OrderedDict
     from collections import defaultdict
 except ImportError as e:
     logging.critical('Importing dependency failed with error: ' + str(e))
