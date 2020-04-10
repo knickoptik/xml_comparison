@@ -11,7 +11,7 @@ except ImportError as e:
 
 logging.basicConfig(
     filename='compare_xml.log',
-    level=logging.DEBUG, filemode='w',
+    level=logging.INFO, filemode='w',
     format='%(asctime)s %(levelname)s %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p',
 )
@@ -55,6 +55,11 @@ class Parser:
 
     def find_tag_by_text_xpath(self, tree, item: str):
         for location in tree.xpath('.//*[contains(text(),"{}")]'.format(item)):
+            logger.debug('Tag located at: ' + location.tag)
+            return location
+
+    def find_tag_by_attrib(self, tree, tag: str, attrib: str, value: str):
+        for location in tree.xpath('.//{}[@{}={}]'.format(tag, attrib, value)):
             logger.debug('Tag located at: ' + location.tag)
             return location
 
@@ -151,6 +156,12 @@ class CompareXml(unittest.TestCase):
             location = self.localize_difference(form, difference)
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
 
+    # todo: Difficult to read.
+    def report_attribute_differences(self, diff, form, message):
+        difference = self.parser.find_tag_by_attrib(form, diff[0], diff[1][0].keys()[0], diff[1][0].values()[0])
+        location = self.localize_difference(form, difference)
+        logger.info('{}: "{}" with attribute "{}" located at {}\n'.format(message, difference.tag, difference.attrib, location))
+
     def get_attributes(self, elements):
         attributes = defaultdict(list)
         for child in elements:
@@ -226,12 +237,14 @@ class CompareXml(unittest.TestCase):
         attributes_prod = self.get_attributes(children_prod)
         attributes_test = self.get_attributes(children_test)
         for i, j in zip(attributes_prod.items(), attributes_test.items()):
-            self.assertEqual(i, j)
+            try:
+                self.assertEqual(i, j)
+            except AssertionError:
+                self.report_attribute_differences(i, self.get_document(0).form, 'Difference prod -> test')
 
 
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
-# todo: Replace ordered dict with dict -> ordered since python 3.6.
 
 
 if __name__ == "__main__":

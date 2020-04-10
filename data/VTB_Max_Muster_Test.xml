@@ -180,6 +180,7 @@
               <v_ap_kurzbezeichnung></v_ap_kurzbezeichnung>
               <v_ap_bezeichnung_lang></v_ap_bezeichnung_lang>
               <v_ap_bezeichnung_druck>Arbeitspreis</v_ap_bezeichnung_druck>
+              <v_ap_bezeichnung_druck>Arbeitsreis</v_ap_bezeichnung_druck>
               <v_ap_von></v_ap_von>
               <v_ap_bis></v_ap_bis>
               <v_ap_preis></v_ap_preis>
@@ -225,7 +226,7 @@
               <v_ap_pa_bez></v_ap_pa_bez>
               <v_ap_ztkp_bez_lt_vertr></v_ap_ztkp_bez_lt_vertr>
           </block_arbeitspreis>
-          <block_verrechnungspreis id="1">
+          <block_verrechnungspreis id="0">
               <objectinfo>RevisionsNr=1.23 zuletzt geändert am 05.02.2019 Variante= Sortierung=</objectinfo>
               <v_vp_bezeichnung>VP 0,00 EUR</v_vp_bezeichnung>
               <v_vp_bezeichnung_lang></v_vp_bezeichnung_lang>
