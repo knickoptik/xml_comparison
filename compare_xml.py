@@ -241,6 +241,7 @@ class CompareXml(unittest.TestCase):
                 self.assertEqual(i, j)
             except AssertionError:
                 self.report_attribute_differences(i, self.get_document(0).form, 'Difference prod -> test')
+                self.report_attribute_differences(j, self.get_document(1).form, 'Difference test -> prod')
 
 
 # todo: Encapsulation -> Getter and setter for object properties.
