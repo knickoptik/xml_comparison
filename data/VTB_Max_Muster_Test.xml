@@ -79,7 +79,7 @@
         <block_vbrst_parameter>
             <objectinfo>RevisionsNr=1.3 zuletzt geändert am 26.05.2008 Variante= Sortierung=</objectinfo>
         </block_vbrst_parameter>
-        <preiszusammenstellung id="1">
+        <preiszusammenstellung id="0">
             <objectinfo>RevisionsNr=1.13 zuletzt geändert am 07.07.2017 Variante= Sortierung=</objectinfo>
             <v_tarifzusamst_formularbez></v_tarifzusamst_formularbez>
             <v_tarifzusamst_kurzbezeichnung></v_tarifzusamst_kurzbezeichnung>
@@ -226,7 +226,7 @@
               <v_ap_pa_bez></v_ap_pa_bez>
               <v_ap_ztkp_bez_lt_vertr></v_ap_ztkp_bez_lt_vertr>
           </block_arbeitspreis>
-          <block_verrechnungspreis id="0">
+          <block_verrechnungspreis id="1">
               <objectinfo>RevisionsNr=1.23 zuletzt geändert am 05.02.2019 Variante= Sortierung=</objectinfo>
               <v_vp_bezeichnung>VP 0,00 EUR</v_vp_bezeichnung>
               <v_vp_bezeichnung_lang></v_vp_bezeichnung_lang>

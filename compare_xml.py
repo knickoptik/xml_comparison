@@ -201,7 +201,6 @@ class CompareXml(unittest.TestCase):
         logger.debug('Difference texts test -> prod: ' + str(diff_test_to_prod))
         return [diff_prod_to_test, diff_test_to_prod]
 
-    # todo: Eventuell refactoring: Differences ermitteln tags / texts.
     def test_tag_differences(self):
         logger.info('Checking xml files for differences in tags.\n')
         # Get all nodes.
@@ -211,12 +210,13 @@ class CompareXml(unittest.TestCase):
         tags_prod = self.get_tags(children_prod)
         tags_test = self.get_tags(children_test)
 
-        # todo: Test Suite passes when no differences are found and reports success.
-        # if len(diff_test_to_prod) == 0:
         diff = self.retrieve_differences(tags_prod, tags_test)
 
-        self.report_tag_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
-        self.report_tag_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
+        if diff:
+            self.report_tag_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
+            self.report_tag_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
+        else:
+            logger.info('No differences between tags.')
 
     def test_text_differences(self):
         logger.info('Checking xml files for differences in text content.\n')
@@ -228,8 +228,11 @@ class CompareXml(unittest.TestCase):
 
         diff = self.retrieve_differences(texts_prod, texts_test)
 
-        self.report_text_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
-        self.report_text_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
+        if diff:
+            self.report_text_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
+            self.report_text_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
+        else:
+            logger.info('No differences between texts.')
 
     def test_attribute_differences(self):
         logger.info('Checking xml files for differences in attributes.\n')
@@ -251,7 +254,7 @@ class CompareXml(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
 
 # def test_print_tree_recursive(self):
 #     root = self.get_document(0).form
