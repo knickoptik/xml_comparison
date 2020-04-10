@@ -5,6 +5,7 @@ try:
     import logging
     import unittest
     from collections import OrderedDict
+    from collections import defaultdict
 except ImportError as e:
     logging.critical('Importing dependency failed with error: ' + str(e))
 
@@ -152,11 +153,11 @@ class CompareXml(unittest.TestCase):
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
 
     def get_attributes(self, elements):
-        attributes = OrderedDict()
+        attributes = defaultdict(list)
         for child in elements:
             if child.attrib:
-                attributes[child.tag] = child.attrib
-        logger.debug('Attributes are: ' + str(attributes))
+                attributes[child.tag].append(child.attrib)
+        logger.debug(attributes)
         return attributes
 
     @classmethod
@@ -225,13 +226,15 @@ class CompareXml(unittest.TestCase):
         # Get elements that have an attribute.
         attributes_prod = self.get_attributes(children_prod)
         attributes_test = self.get_attributes(children_test)
-
+        # todo: Zip function truncates the result.
         for i, j in zip(attributes_prod.items(), attributes_test.items()):
             self.assertEqual(i, j)
+
 
 # todo: Check for differences in attributes.
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
+# todo: Replace ordered dict with dict -> ordered since python 3.6.
 
 
 if __name__ == "__main__":
