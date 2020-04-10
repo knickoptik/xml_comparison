@@ -79,7 +79,7 @@
         <block_vbrst_parameter>
             <objectinfo>RevisionsNr=1.3 zuletzt geändert am 26.05.2008 Variante= Sortierung=</objectinfo>
         </block_vbrst_parameter>
-        <preiszusammenstellung id="0">
+        <preiszusammenstellung id="1">
             <objectinfo>RevisionsNr=1.13 zuletzt geändert am 07.07.2017 Variante= Sortierung=</objectinfo>
             <v_tarifzusamst_formularbez></v_tarifzusamst_formularbez>
             <v_tarifzusamst_kurzbezeichnung></v_tarifzusamst_kurzbezeichnung>

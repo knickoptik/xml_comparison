@@ -143,7 +143,6 @@ class CompareXml(unittest.TestCase):
         location = (', '.join(location))
         return location
 
-    # todo: No message in case there are no differences.
     def report_tag_differences(self, diff, form, message):
         for i in range(len(diff)):
             difference = self.parser.find_tag_by_name_xpath(form, diff[i])
@@ -241,20 +240,23 @@ class CompareXml(unittest.TestCase):
         # Get elements that have an attribute.
         attributes_prod = self.get_attributes(children_prod)
         attributes_test = self.get_attributes(children_test)
+        success = True
         for i, j in zip(attributes_prod.items(), attributes_test.items()):
             try:
                 self.assertEqual(i, j)
             except AssertionError:
+                success = False
                 self.report_attribute_differences(i, self.get_document(0).form, 'Difference prod -> test')
                 self.report_attribute_differences(j, self.get_document(1).form, 'Difference test -> prod')
-
+        if success:
+            logger.info('No differences between attributes.\n')
 
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
 
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    unittest.main()
 
 # def test_print_tree_recursive(self):
 #     root = self.get_document(0).form
