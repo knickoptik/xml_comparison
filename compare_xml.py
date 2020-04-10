@@ -156,9 +156,11 @@ class CompareXml(unittest.TestCase):
             location = self.localize_difference(form, difference)
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
 
-    # todo: Difficult to read.
     def report_attribute_differences(self, diff, form, message):
-        difference = self.parser.find_tag_by_attrib(form, diff[0], diff[1][0].keys()[0], diff[1][0].values()[0])
+        tag = diff[0]
+        attribute = diff[1][0].keys()[0]
+        value = diff[1][0].values()[0]
+        difference = self.parser.find_tag_by_attrib(form, tag, attribute, value)
         location = self.localize_difference(form, difference)
         logger.info('{}: "{}" with attribute "{}" located at {}\n'.format(message, difference.tag, difference.attrib, location))
 
