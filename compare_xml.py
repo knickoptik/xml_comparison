@@ -66,13 +66,13 @@ class Parser:
     def get_attribute(self, tag):
         return tag.attrib
 
-    def find_tag_by_name(self, tree, item: str):
-        for location in tree.findall('.//' + item):
+    def find_tag_by_name(self, tree, tag: str):
+        for location in tree.findall('.//' + tag):
             logger.debug('Tag located at: ' + location.tag)
             return location
 
-    def find_tag_by_text(self, tree, item: str):
-        for location in tree.xpath('.//*[contains(text(),"{}")]'.format(item)):
+    def find_tag_by_text(self, tree, tag: str):
+        for location in tree.xpath('.//*[contains(text(),"{}")]'.format(tag)):
             logger.debug('Tag located at: ' + location.tag)
             return location
 
@@ -82,11 +82,12 @@ class Parser:
             return location
 
     def get_parent_nodes(self, tree, node):
-        children = self.get_children(tree)
-        temp = children.index(node) + 1
-        res = children[:temp]
-        logger.debug('Parent nodes are: ' + str(res))
-        return res
+        root_children = self.get_children(tree)
+        node_children = root_children.index(node) + 1
+        # Remove all nodes below the current node.
+        parent_nodes = root_children[:node_children]
+        logger.debug('Parent nodes are: ' + str(parent_nodes))
+        return parent_nodes
 
     def view_tree_levels(self, elem, func, level=0):
         """
@@ -95,6 +96,7 @@ class Parser:
         """
         func(elem, level)
         # todo: Replace getchildren.
+        # todo: Test script should not alter xml document.
         for child in elem.getchildren():
             self.view_tree_levels(child, func, level+1)
             child.set('lvl', level)
@@ -174,6 +176,7 @@ class CompareXml(unittest.TestCase):
             location = self.localize_difference(form, difference)
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
 
+    # todo: Meaning of 0 and 1 unclear?
     def report_attribute_differences(self, diff, form, message):
         tag = diff[0]
         attribute = diff[1][0].keys()[0]
