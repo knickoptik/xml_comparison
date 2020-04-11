@@ -26,7 +26,7 @@ class Document:
     def __init__(self, form_id: str, contract_number: object, form: object):
         self.__form_id = form_id
         self.__contract_number = contract_number
-        self.form = form
+        self.__form = form
         logger.debug('Created document: Form ID - {}, Contract Number - {}'.format(self.get_form_id(), self.get_contract_number()))
 
     def get_form_id(self):
@@ -40,6 +40,12 @@ class Document:
 
     def set_contract_number(self, contract_number):
         self.__contract_number = contract_number
+
+    def get_form(self):
+        return self.__form
+
+    def set_form(self, form):
+        self.__form = form
 
 
 class Parser:
@@ -216,8 +222,8 @@ class CompareXml(unittest.TestCase):
     def test_tag_differences(self):
         logger.info('Checking xml files for differences in tags.\n')
         # Get all nodes.
-        children_prod = self.parser.get_children(self.get_document(0).form)
-        children_test = self.parser.get_children(self.get_document(1).form)
+        children_prod = self.parser.get_children(self.get_document(0).get_form())
+        children_test = self.parser.get_children(self.get_document(1).get_form())
 
         tags_prod = self.get_tags(children_prod)
         tags_test = self.get_tags(children_test)
@@ -225,15 +231,15 @@ class CompareXml(unittest.TestCase):
         diff = self.retrieve_differences(tags_prod, tags_test)
 
         if diff:
-            self.report_tag_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
-            self.report_tag_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
+            self.report_tag_differences(diff[0], self.get_document(0).get_form(), 'Difference prod -> test')
+            self.report_tag_differences(diff[1], self.get_document(1).get_form(), 'Difference test -> prod')
         else:
             logger.info('No differences between tags.')
 
     def test_text_differences(self):
         logger.info('Checking xml files for differences in text content.\n')
-        children_prod = self.parser.get_children(self.get_document(0).form)
-        children_test = self.parser.get_children(self.get_document(1).form)
+        children_prod = self.parser.get_children(self.get_document(0).get_form())
+        children_test = self.parser.get_children(self.get_document(1).get_form())
 
         texts_prod = self.get_texts(children_prod)
         texts_test = self.get_texts(children_test)
@@ -241,15 +247,15 @@ class CompareXml(unittest.TestCase):
         diff = self.retrieve_differences(texts_prod, texts_test)
 
         if diff:
-            self.report_text_differences(diff[0], self.get_document(0).form, 'Difference prod -> test')
-            self.report_text_differences(diff[1], self.get_document(1).form, 'Difference test -> prod')
+            self.report_text_differences(diff[0], self.get_document(0).get_form(), 'Difference prod -> test')
+            self.report_text_differences(diff[1], self.get_document(1).get_form(), 'Difference test -> prod')
         else:
             logger.info('No differences between texts.')
 
     def test_attribute_differences(self):
         logger.info('Checking xml files for differences in attributes.\n')
-        children_prod = self.parser.get_children(self.get_document(0).form)
-        children_test = self.parser.get_children(self.get_document(1).form)
+        children_prod = self.parser.get_children(self.get_document(0).get_form())
+        children_test = self.parser.get_children(self.get_document(1).get_form())
         # Get elements that have an attribute.
         attributes_prod = self.get_attributes(children_prod)
         attributes_test = self.get_attributes(children_test)
@@ -259,8 +265,8 @@ class CompareXml(unittest.TestCase):
                 self.assertEqual(i, j)
             except AssertionError:
                 success = False
-                self.report_attribute_differences(i, self.get_document(0).form, 'Difference prod -> test')
-                self.report_attribute_differences(j, self.get_document(1).form, 'Difference test -> prod')
+                self.report_attribute_differences(i, self.get_document(0).get_form(), 'Difference prod -> test')
+                self.report_attribute_differences(j, self.get_document(1).get_form(), 'Difference test -> prod')
         if success:
             logger.info('No differences between attributes.\n')
 
