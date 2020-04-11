@@ -164,20 +164,20 @@ class CompareXml(unittest.TestCase):
         location = (', '.join(location))
         return location
 
-    def report_tag_differences(self, diff, form, message):
+    def report_tag_differences(self, diff: list, form, message):
         for i in range(len(diff)):
             difference = self.parser.find_tag_by_name(form, diff[i])
             location = self.localize_difference(form, difference)
             logger.info('{}: Tag located at {}\n'.format(message, location))
 
-    def report_text_differences(self, diff, form, message):
+    def report_text_differences(self, diff: list, form, message):
         for i in range(len(diff)):
             difference = self.parser.find_tag_by_text(form, diff[i])
             location = self.localize_difference(form, difference)
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
 
-    # todo: Meaning of 0 and 1 unclear?
-    def report_attribute_differences(self, diff, form, message):
+    # todo: Meaning of 0 and 1 unclear.
+    def report_attribute_differences(self, diff: list, form, message):
         tag = diff[0]
         attribute = diff[1][0].keys()[0]
         value = diff[1][0].values()[0]
