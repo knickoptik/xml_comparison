@@ -25,15 +25,21 @@ logger.addHandler(stream_handler)
 class Document:
     def __init__(self, form_id: str, contract_number: object, form: object):
         self.__form_id = form_id
-        self.contract_number = contract_number
+        self.__contract_number = contract_number
         self.form = form
-        logger.debug('Created document: Form ID - {}, Contract Number - {}'.format(self.get_form_id(), self.contract_number))
+        logger.debug('Created document: Form ID - {}, Contract Number - {}'.format(self.get_form_id(), self.get_contract_number()))
 
     def get_form_id(self):
         return self.__form_id
 
     def set_form_id(self, form_id):
         self.__form_id = form_id
+
+    def get_contract_number(self):
+        return self.__contract_number
+
+    def set_contract_number(self, contract_number):
+        self.__contract_number = contract_number
 
 
 class Parser:
@@ -121,7 +127,7 @@ class CompareXml(unittest.TestCase):
 
     def compare_contract_number(self):
         try:
-            self.assertEqual(self.get_document(0).contract_number.text, self.get_document(1).contract_number.text)
+            self.assertEqual(self.get_document(0).get_contract_number().text, self.get_document(1).get_contract_number().text)
             logger.debug('Contract numbers match.')
         except AssertionError as e:
             logger.error('Contract numbers do not match.\n' + str(e))
@@ -130,7 +136,7 @@ class CompareXml(unittest.TestCase):
 
     def check_preconditions(self):
         if self.compare_form_id() and self.compare_contract_number():
-            logger.info('Starting test suite for contract number ' + str(self.get_document(0).contract_number.text) + '\n')
+            logger.info('Starting test suite for contract number ' + str(self.get_document(0).get_contract_number().text) + '\n')
         else:
             logger.error('Exiting test.')
             raise AssertionError
