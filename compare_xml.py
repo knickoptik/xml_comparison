@@ -280,7 +280,3 @@ class CompareXml(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-# def test_print_tree_recursive(self):
-#     root = self.get_document(0).form
-#     self.parser.perf_func(root, self.parser.print_level)
