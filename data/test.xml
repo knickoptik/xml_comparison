@@ -1,0 +1,47 @@
+<formular id="5721405">
+    <zoo>
+        <city>Frankfurt</city>
+        <v_vertragsnummer>728349578923045</v_vertragsnummer>
+        <animals total="26">
+            <type>
+                <lion>
+                    <name>Simba</name>
+                    <food>Meat</food>
+                    <weight>190kg</weight>
+                    <height>1,2m</height>
+                    <length>1.8m</length>
+                    <age>8</age>
+                    <gender>male</gender>#
+                    <guitarhero>Yes</guitarhero>
+                </lion>
+                <giraffe>
+                    <name>Longneck</name>
+                    <food>Grass</food>
+                    <weight>80 kg</weight>
+                    <height>5.5m</height>
+                    <length>4.1m</length>
+                    <age>4</age>
+                    <gender>female</gender>
+                </giraffe>
+                <monkey>
+                    <name>Jimmy</name>
+                    <food>Nuts</food>
+                    <weight>20kg</weight>
+                    <height>56cm</height>
+                    <length>75cm</length>
+                    <age>10</age>
+                    <gender>male</gender>
+                </monkey>
+                <penguin>
+                    <name>Cory</name>
+                    <food>Fis</food>
+                    <weight>23kg</weight>
+                    <height>1.1m</height>
+                    <length>1.2m</length>
+                    <age>2</age>
+                    <gender>feale</gender>
+                </penguin>
+            </type>
+        </animals>
+    </zoo>
+</formular>

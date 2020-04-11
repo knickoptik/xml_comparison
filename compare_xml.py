@@ -254,7 +254,7 @@ class CompareXml(unittest.TestCase):
 
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
-# todo: Add meaningfull function comments.
+# todo: Add meaningful function comments.
 
 
 if __name__ == "__main__":
