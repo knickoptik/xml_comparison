@@ -155,11 +155,11 @@ class CompareXml(unittest.TestCase):
         except TypeError as e:
             logger.error('File is not in xml format.\n' + str(e))
 
-    def localize_difference(self, form, location):
-        parent_nodes = self.parser.get_parent_nodes(form, location)
+    def localize_difference(self, form, tag):
+        parent_nodes = self.parser.get_parent_nodes(form, tag)
         location = self.get_tags(parent_nodes)
         # Use list comprehension to make tags more readable.
-        location = ['<' + s + '>' for s in location]
+        location = ['<' + tag_name + '>' for tag_name in location]
         # Remove list brackets.
         location = (', '.join(location))
         return location
@@ -275,6 +275,7 @@ class CompareXml(unittest.TestCase):
 
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
+# todo: Get document 0 and get document 1 -> Clarify meaning.
 
 
 if __name__ == "__main__":

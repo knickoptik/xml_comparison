@@ -1,28 +1,28 @@
-04/11/2020 08:45:43 PM ERROR File .DS_Store cannot be parsed.
+04/11/2020 08:55:28 PM ERROR File .DS_Store cannot be parsed.
 Document is empty, line 1, column 1 (.DS_Store, line 1)
-04/11/2020 08:45:43 PM INFO Starting test suite for contract number 728349578923045
+04/11/2020 08:55:28 PM INFO Starting test suite for contract number 728349578923045
 
-04/11/2020 08:45:43 PM INFO Checking xml files for differences in attributes.
+04/11/2020 08:55:28 PM INFO Checking xml files for differences in attributes.
 
-04/11/2020 08:45:43 PM INFO Difference prod -> test: "animals" with attribute "{'total': '4'}" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>
+04/11/2020 08:55:28 PM INFO Difference prod -> test: "animals" with attribute "{'total': '4'}" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>
 
-04/11/2020 08:45:43 PM INFO Difference test -> prod: "animals" with attribute "{'total': '26'}" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>
+04/11/2020 08:55:28 PM INFO Difference test -> prod: "animals" with attribute "{'total': '26'}" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>
 
-04/11/2020 08:45:43 PM INFO Checking xml files for differences in tags.
+04/11/2020 08:55:28 PM INFO Checking xml files for differences in tags.
 
-04/11/2020 08:45:43 PM INFO Difference test -> prod: Tag located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>
+04/11/2020 08:55:28 PM INFO Difference test -> prod: Tag located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>
 
-04/11/2020 08:45:43 PM INFO Checking xml files for differences in text content.
+04/11/2020 08:55:28 PM INFO Checking xml files for differences in text content.
 
-04/11/2020 08:45:43 PM INFO Difference prod -> test: "800 kg" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <giraffe>, <name>, <food>, <weight>
+04/11/2020 08:55:28 PM INFO Difference prod -> test: "800 kg" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <giraffe>, <name>, <food>, <weight>
 
-04/11/2020 08:45:43 PM INFO Difference prod -> test: "Fish" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <giraffe>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <monkey>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <penguin>, <name>, <food>
+04/11/2020 08:55:28 PM INFO Difference prod -> test: "Fish" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <giraffe>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <monkey>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <penguin>, <name>, <food>
 
-04/11/2020 08:45:43 PM INFO Difference test -> prod: "Yes" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>
+04/11/2020 08:55:28 PM INFO Difference test -> prod: "feale" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>, <giraffe>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <monkey>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <penguin>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>
 
-04/11/2020 08:45:43 PM INFO Difference test -> prod: "feale" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>, <giraffe>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <monkey>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <penguin>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>
+04/11/2020 08:55:28 PM INFO Difference test -> prod: "Yes" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>
 
-04/11/2020 08:45:43 PM INFO Difference test -> prod: "80 kg" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>, <giraffe>, <name>, <food>, <weight>
+04/11/2020 08:55:28 PM INFO Difference test -> prod: "Fis" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>, <giraffe>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <monkey>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <penguin>, <name>, <food>
 
-04/11/2020 08:45:43 PM INFO Difference test -> prod: "Fis" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>, <giraffe>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <monkey>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <penguin>, <name>, <food>
+04/11/2020 08:55:28 PM INFO Difference test -> prod: "80 kg" located at <formular>, <zoo>, <city>, <v_vertragsnummer>, <animals>, <type>, <lion>, <name>, <food>, <weight>, <height>, <length>, <age>, <gender>, <guitarhero>, <giraffe>, <name>, <food>, <weight>
 
