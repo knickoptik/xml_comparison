@@ -224,12 +224,12 @@ class CompareXml(unittest.TestCase):
 
     def test_tag_differences(self):
         logger.info('Checking xml files for differences in tags.\n')
-        # Get all nodes.
-        children_prod = self.parser.get_children(self.get_document(0).get_form())
-        children_test = self.parser.get_children(self.get_document(1).get_form())
 
-        tags_prod = self.get_tags(children_prod)
-        tags_test = self.get_tags(children_test)
+        nodes_prod = self.parser.get_children(self.get_document(0).get_form())
+        nodes_test = self.parser.get_children(self.get_document(1).get_form())
+
+        tags_prod = self.get_tags(nodes_prod)
+        tags_test = self.get_tags(nodes_test)
 
         diff = self.retrieve_differences(tags_prod, tags_test)
 
@@ -241,11 +241,11 @@ class CompareXml(unittest.TestCase):
 
     def test_text_differences(self):
         logger.info('Checking xml files for differences in text content.\n')
-        children_prod = self.parser.get_children(self.get_document(0).get_form())
-        children_test = self.parser.get_children(self.get_document(1).get_form())
+        nodes_prod = self.parser.get_children(self.get_document(0).get_form())
+        nodes_test = self.parser.get_children(self.get_document(1).get_form())
 
-        texts_prod = self.get_texts(children_prod)
-        texts_test = self.get_texts(children_test)
+        texts_prod = self.get_texts(nodes_prod)
+        texts_test = self.get_texts(nodes_test)
 
         diff = self.retrieve_differences(texts_prod, texts_test)
 
@@ -257,19 +257,19 @@ class CompareXml(unittest.TestCase):
 
     def test_attribute_differences(self):
         logger.info('Checking xml files for differences in attributes.\n')
-        children_prod = self.parser.get_children(self.get_document(0).get_form())
-        children_test = self.parser.get_children(self.get_document(1).get_form())
+        nodes_prod = self.parser.get_children(self.get_document(0).get_form())
+        nodes_test = self.parser.get_children(self.get_document(1).get_form())
         # Get elements that have an attribute.
-        attributes_prod = self.get_attributes(children_prod)
-        attributes_test = self.get_attributes(children_test)
+        attributes_prod = self.get_attributes(nodes_prod)
+        attributes_test = self.get_attributes(nodes_test)
         success = True
-        for i, j in zip(attributes_prod.items(), attributes_test.items()):
+        for attrib_prod, attrib_test in zip(attributes_prod.items(), attributes_test.items()):
             try:
-                self.assertEqual(i, j)
+                self.assertEqual(attrib_prod, attrib_test)
             except AssertionError:
                 success = False
-                self.report_attribute_differences(i, self.get_document(0).get_form(), 'Difference prod -> test')
-                self.report_attribute_differences(j, self.get_document(1).get_form(), 'Difference test -> prod')
+                self.report_attribute_differences(attrib_prod, self.get_document(0).get_form(), 'Difference prod -> test')
+                self.report_attribute_differences(attrib_test, self.get_document(1).get_form(), 'Difference test -> prod')
         if success:
             logger.info('No differences between attributes.\n')
 
