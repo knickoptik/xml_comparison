@@ -24,10 +24,16 @@ logger.addHandler(stream_handler)
 
 class Document:
     def __init__(self, form_id: str, contract_number: object, form: object):
-        self.form_id = form_id
+        self.__form_id = form_id
         self.contract_number = contract_number
         self.form = form
-        logger.debug('Created document: Form ID - {}, Contract Number - {}'.format(self.form_id, self.contract_number))
+        logger.debug('Created document: Form ID - {}, Contract Number - {}'.format(self.get_form_id(), self.contract_number))
+
+    def get_form_id(self):
+        return self.__form_id
+
+    def set_form_id(self, form_id):
+        self.__form_id = form_id
 
 
 class Parser:
@@ -106,7 +112,7 @@ class CompareXml(unittest.TestCase):
 
     def compare_form_id(self):
         try:
-            self.assertEqual(self.get_document(0).form_id, self.get_document(1).form_id)
+            self.assertEqual(self.get_document(0).get_form_id(), self.get_document(1).get_form_id())
             logger.debug('Form Ids match.')
         except AssertionError as e:
             logger.error('Form Ids do not match.\n' + str(e))
