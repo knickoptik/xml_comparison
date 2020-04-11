@@ -48,12 +48,12 @@ class Parser:
     def get_attribute(self, tag):
         return tag.attrib
 
-    def find_tag_by_name_xpath(self, tree, item: str):
+    def find_tag_by_name(self, tree, item: str):
         for location in tree.findall('.//' + item):
             logger.debug('Tag located at: ' + location.tag)
             return location
 
-    def find_tag_by_text_xpath(self, tree, item: str):
+    def find_tag_by_text(self, tree, item: str):
         for location in tree.xpath('.//*[contains(text(),"{}")]'.format(item)):
             logger.debug('Tag located at: ' + location.tag)
             return location
@@ -146,13 +146,13 @@ class CompareXml(unittest.TestCase):
 
     def report_tag_differences(self, diff, form, message):
         for i in range(len(diff)):
-            difference = self.parser.find_tag_by_name_xpath(form, diff[i])
+            difference = self.parser.find_tag_by_name(form, diff[i])
             location = self.localize_difference(form, difference)
             logger.info('{}: Tag located at {}\n'.format(message, location))
 
     def report_text_differences(self, diff, form, message):
         for i in range(len(diff)):
-            difference = self.parser.find_tag_by_text_xpath(form, diff[i])
+            difference = self.parser.find_tag_by_text(form, diff[i])
             location = self.localize_difference(form, difference)
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
 
@@ -254,7 +254,6 @@ class CompareXml(unittest.TestCase):
 
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
-# todo: Add meaningful function comments.
 
 
 if __name__ == "__main__":
