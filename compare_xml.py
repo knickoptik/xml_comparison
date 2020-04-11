@@ -79,6 +79,7 @@ class Parser:
         # todo: Replace getchildren.
         for child in elem.getchildren():
             self.view_tree_levels(child, func, level+1)
+            child.set('lvl', level)
 
     def print_level(self, elem, level):
         logger.debug(' '*level + '<' + elem.tag + '>')
@@ -253,6 +254,7 @@ class CompareXml(unittest.TestCase):
 
 # todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
+# todo: Add meaningfull function comments.
 
 
 if __name__ == "__main__":
