@@ -49,8 +49,6 @@ class Document:
 
 
 class Parser:
-    def __init__(self, documents: dict):
-        self.documents = documents
 
     def parse_file(self, xml):
         parser = etree.XMLParser(remove_comments=True)
@@ -196,7 +194,7 @@ class CompareXml(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         logger.debug('Parsing documents.')
-        cls.parser = Parser(cls.documents)
+        cls.parser = Parser()
         precondition = CompareXml()
         for file in os.listdir('data'):
             try:
