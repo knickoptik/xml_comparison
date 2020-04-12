@@ -196,7 +196,7 @@ class CompareXml(unittest.TestCase):
     def setUpClass(cls):
         logger.debug('Parsing documents.')
         cls.parser = Parser()
-        precondition = CompareXml()
+        setup = CompareXml()
         for file in os.listdir('data'):
             try:
                 tree = cls.parser.parse_file('data/' + file)
@@ -207,7 +207,7 @@ class CompareXml(unittest.TestCase):
                 cls.documents[file] = Document(form_id, contract_number, root)
             except etree.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
-        precondition.check_preconditions()
+        setup.check_preconditions()
 
     def retrieve_differences(self, list_prod, list_test):
         # Get all node tags.
@@ -224,6 +224,7 @@ class CompareXml(unittest.TestCase):
     def test_tag_differences(self):
         logger.info('Checking xml files for differences in tags.\n')
 
+        # todo: document_test or document_prod not 0 and 1.
         nodes_prod = self.parser.get_children(self.get_document(0).get_form())
         nodes_test = self.parser.get_children(self.get_document(1).get_form())
 
