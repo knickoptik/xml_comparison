@@ -104,8 +104,8 @@ class Parser:
 
 
 class CompareXml(unittest.TestCase):
+    # todo: These can be object properties.
     documents = dict()
-    parser: Parser = None
 
     def get_document(self, index):
         return list(self.documents.items())[index][1]
@@ -147,6 +147,7 @@ class CompareXml(unittest.TestCase):
             logger.error('Exiting test.')
             raise AssertionError
 
+    # todo: No usage.
     def file_is_xml(self, file):
         try:
             file.endswith('.xml')
@@ -271,7 +272,6 @@ class CompareXml(unittest.TestCase):
         if success:
             logger.info('No differences between attributes.\n')
 
-# todo: Encapsulation -> Getter and setter for object properties.
 # todo: User friendly report at INFO level.
 # todo: Get document 0 and get document 1 -> Clarify meaning.
 
