@@ -103,7 +103,11 @@ class Parser:
 
 class CompareXml(unittest.TestCase):
     # todo: These can be object properties.
-    documents = dict()
+    def __init__(self, documents, document_prod, document_test):
+        super().__init__()
+        self.documents = documents
+        self.document_prod = document_prod
+        self.document_test = document_test
 
     def get_document(self, index):
         return list(self.documents.items())[index][1]
@@ -144,13 +148,6 @@ class CompareXml(unittest.TestCase):
         else:
             logger.error('Exiting test.')
             raise AssertionError
-
-    # todo: No usage.
-    def file_is_xml(self, file):
-        try:
-            file.endswith('.xml')
-        except TypeError as e:
-            logger.error('File is not in xml format.\n' + str(e))
 
     def localize_difference(self, form, tag):
         parent_nodes = self.parser.get_parent_nodes(form, tag)
@@ -194,7 +191,7 @@ class CompareXml(unittest.TestCase):
     def setUpClass(cls):
         logger.debug('Parsing documents.')
         cls.parser = Parser()
-        setup = CompareXml()
+        setup = CompareXml(documents=None, document_prod=None, document_test=None)
         for file in os.listdir('data'):
             try:
                 tree = cls.parser.parse_file('data/' + file)
@@ -202,9 +199,11 @@ class CompareXml(unittest.TestCase):
                 form = cls.parser.find_tag(root, 'formular')
                 form_id = str(cls.parser.get_attribute(form).get('id'))
                 contract_number = cls.parser.find_tag(root, 'v_vertragsnummer')
-                cls.documents[file] = Document(form_id, contract_number, root)
+                setup.documents[file] = Document(form_id, contract_number, root)
             except etree.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
+        setup.document_prod = setup.get_document(0)
+        setup.document_test = setup.get_document(1)
         setup.check_preconditions()
 
     def retrieve_differences(self, list_prod, list_test):
