@@ -119,8 +119,6 @@ class CompareXml(unittest.TestCase):
                 setup.documents[file] = Document(form_id, contract_number, root)
             except etree.ParseError as e:
                 logger.error('File ' + file + ' cannot be parsed.\n' + str(e))
-        setup.document_prod = setup.get_document(0)
-        setup.document_test = setup.get_document(1)
         setup.check_preconditions()
 
     def retrieve_differences(self, list_prod, list_test):
