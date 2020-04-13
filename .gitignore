@@ -1,3 +1,4 @@
 # Default ignored files
 /.idea/
 /xml_comparison.iml
+.DS_Store
