@@ -93,18 +93,14 @@ class Parser:
         tree and prints the elements position.
         """
         func(elem, level)
-        # todo: Replace getchildren.
-        # todo: Test script should not alter xml document.
         for child in elem.getchildren():
             self.view_tree_levels(child, func, level+1)
-            child.set('lvl', level)
 
     def print_level(self, elem, level):
         logger.debug(' '*level + '<' + elem.tag + '>')
 
 
 class CompareXml(unittest.TestCase):
-    # todo: These can be object properties.
     documents = dict()
 
     def get_document(self, index):
@@ -281,7 +277,6 @@ class CompareXml(unittest.TestCase):
             logger.info('No differences between attributes.\n')
 
 # todo: User friendly report at INFO level.
-# todo: Get document 0 and get document 1 -> Clarify meaning.
 
 
 if __name__ == "__main__":
