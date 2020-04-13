@@ -13,12 +13,12 @@ class Parser:
     def get_children(self, tree):
         return list(tree.iter())
 
+    def get_attribute(self, tag):
+        return tag.attrib
+
     def find_tag(self, root, tag_name):
         for tag in root.iter(tag_name):
             return tag
-
-    def get_attribute(self, tag):
-        return tag.attrib
 
     def find_tag_by_name(self, tree, tag: str):
         for location in tree.findall('.//' + tag):
