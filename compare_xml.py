@@ -102,12 +102,7 @@ class Parser:
 
 
 class CompareXml(unittest.TestCase):
-    # todo: These can be object properties.
-    def __init__(self, documents, document_prod, document_test):
-        super().__init__()
-        self.documents = documents
-        self.document_prod = document_prod
-        self.document_test = document_test
+    documents = dict()
 
     def get_document(self, index):
         return list(self.documents.items())[index][1]
@@ -170,7 +165,6 @@ class CompareXml(unittest.TestCase):
             location = self.localize_difference(form, difference)
             logger.info('{}: "{}" located at {}\n'.format(message, difference.text, location))
 
-    # todo: Meaning of 0 and 1 unclear.
     def report_attribute_differences(self, diff: list, form, message):
         tag = diff[0]
         attribute = diff[1][0].keys()[0]
@@ -191,7 +185,7 @@ class CompareXml(unittest.TestCase):
     def setUpClass(cls):
         logger.debug('Parsing documents.')
         cls.parser = Parser()
-        setup = CompareXml(documents=None, document_prod=None, document_test=None)
+        setup = CompareXml()
         for file in os.listdir('data'):
             try:
                 tree = cls.parser.parse_file('data/' + file)
@@ -221,7 +215,6 @@ class CompareXml(unittest.TestCase):
     def test_tag_differences(self):
         logger.info('Checking xml files for differences in tags.\n')
 
-        # todo: document_test or document_prod not 0 and 1.
         nodes_prod = self.parser.get_children(self.get_document(0).get_form())
         nodes_test = self.parser.get_children(self.get_document(1).get_form())
 
@@ -271,7 +264,6 @@ class CompareXml(unittest.TestCase):
             logger.info('No differences between attributes.\n')
 
 # todo: User friendly report at INFO level.
-# todo: Get document 0 and get document 1 -> Clarify meaning.
 
 
 if __name__ == "__main__":
