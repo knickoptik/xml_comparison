@@ -94,10 +94,8 @@ class Parser:
         """
         func(elem, level)
         # todo: Replace getchildren.
-        # todo: Test script should not alter xml document.
         for child in elem.getchildren():
             self.view_tree_levels(child, func, level+1)
-            child.set('lvl', level)
 
     def print_level(self, elem, level):
         logger.debug(' '*level + '<' + elem.tag + '>')
