@@ -145,8 +145,8 @@ class CompareXml(unittest.TestCase):
         diff = self.retrieve_differences(tags_prod, tags_test)
 
         if diff:
-            self.report_tag_differences(diff[0], self.get_document(0).get_form(), 'Difference prod -> test')
             self.report_tag_differences(diff[1], self.get_document(1).get_form(), 'Difference test -> prod')
+            self.report_tag_differences(diff[0], self.get_document(0).get_form(), 'Difference prod -> test')
         else:
             logger.info('No differences between tags.')
 
@@ -161,8 +161,8 @@ class CompareXml(unittest.TestCase):
         diff = self.retrieve_differences(texts_prod, texts_test)
 
         if diff:
-            self.report_text_differences(diff[0], self.get_document(0).get_form(), 'Difference prod -> test')
             self.report_text_differences(diff[1], self.get_document(1).get_form(), 'Difference test -> prod')
+            self.report_text_differences(diff[0], self.get_document(0).get_form(), 'Difference prod -> test')
         else:
             logger.info('No differences between texts.')
 
@@ -179,8 +179,8 @@ class CompareXml(unittest.TestCase):
                 self.assertEqual(attrib_prod, attrib_test)
             except AssertionError:
                 success = False
-                self.report_attribute_differences(attrib_prod, self.get_document(0).get_form(), 'Difference prod -> test')
                 self.report_attribute_differences(attrib_test, self.get_document(1).get_form(), 'Difference test -> prod')
+                self.report_attribute_differences(attrib_prod, self.get_document(0).get_form(), 'Difference prod -> test')
         if success:
             logger.info('No differences between attributes.\n')
 
