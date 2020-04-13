@@ -42,16 +42,3 @@ class Parser:
         parent_nodes = root_children[:node_children]
         logger.debug('Parent nodes are: ' + str(parent_nodes))
         return parent_nodes
-
-    # def view_tree_levels(self, elem, func, level=0):
-    #     """
-    #     Recursive function that records the level of an element in the
-    #     tree and prints the elements position.
-    #     """
-    #     func(elem, level)
-    #     # todo: Replace getchildren.
-    #     for child in elem.getchildren():
-    #         self.eview_tree_levels(child, func, level+1)
-    #
-    # def print_level(self, elem, level):
-    #     logger.debug(' '*level + '<' + elem.tag + '>')
