@@ -90,8 +90,11 @@ class CompareXml(unittest.TestCase):
 
     def report_attribute_differences(self, diff: list, form, message):
         tag = diff[0]
-        attribute = diff[1][0].keys()[0]
-        value = diff[1][0].values()[0]
+        logger.debug(tag)
+        attribute = diff[1].keys()[0]
+        logger.debug(attribute)
+        value = diff[1].values()[0]
+        logger.debug(value)
         difference = self.parser.find_tag_by_attrib(form, tag, attribute, value)
         location = self.localize_difference(form, difference)
         logger.info('{}: "{}" with attribute "{}" located at {}\n'.format(message, difference.tag, difference.attrib, location))
@@ -174,13 +177,35 @@ class CompareXml(unittest.TestCase):
         attributes_prod = self.get_attributes(nodes_prod)
         attributes_test = self.get_attributes(nodes_test)
         success = True
+        # Compare attribute pairs.
         for attrib_prod, attrib_test in zip(attributes_prod.items(), attributes_test.items()):
             try:
+                logger.debug(str(attrib_prod))
+                logger.debug(str(attrib_test))
                 self.assertEqual(attrib_prod, attrib_test)
             except AssertionError:
                 success = False
-                self.report_attribute_differences(attrib_test, self.get_document(1).get_form(), 'Difference test -> prod')
-                self.report_attribute_differences(attrib_prod, self.get_document(0).get_form(), 'Difference prod -> test')
+                # Take the lists remove pairs that match.
+                attrib_prod_values = attrib_prod[1]
+                attrib_test_values = attrib_test[1]
+                logger.debug(str(attrib_prod_values))
+                logger.debug(str(attrib_test_values))
+                for attrib_val_prod, attrib_val_test in zip(attrib_prod_values, attrib_test_values):
+                    logger.debug(str(attrib_val_prod))
+                    logger.debug(str(attrib_val_test))
+                    if attrib_val_prod != attrib_val_test:
+                        # Give some list that holds tag, attrib_key, attrib_value to reporting function.
+                        attrib_diff_test = []
+                        attrib_diff_prod = []
+                        attrib_diff_test.append(attrib_test[0])
+                        attrib_diff_test.append(attrib_val_test)
+                        attrib_diff_prod.append(attrib_prod[0])
+                        attrib_diff_prod.append(attrib_val_prod)
+                        logger.debug(attrib_diff_test)
+                        self.report_attribute_differences(attrib_diff_test, self.get_document(1).get_form(), 'Difference test -> prod')
+                        self.report_attribute_differences(attrib_diff_prod, self.get_document(0).get_form(), 'Difference prod -> test')
+                # self.report_attribute_differences(attrib_test, self.get_document(1).get_form(), 'Difference test -> prod')
+                # self.report_attribute_differences(attrib_prod, self.get_document(0).get_form(), 'Difference prod -> test')
         if success:
             logger.info('No differences between attributes.\n')
 
